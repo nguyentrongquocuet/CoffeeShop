@@ -387,7 +387,7 @@ header('Content-Type: text/html; charset=UTF-8');
                                   <th>'.$row['ID'].'</th>
                                   <td>'.$row['fullname'].'</td>
                                   <td class="text-right">'.$row['sumOfShifts'].'</td>
-                                  <td class="text-right">'.$row['sumOfSalary'].' VNĐ</td>
+                                  <td class="text-right">'.number_format($row['sumOfSalary'], 0).' VNĐ</td>
                                   </tr>';
                             }
                           } 

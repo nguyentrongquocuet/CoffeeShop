@@ -74,9 +74,6 @@ header('Content-Type: text/html; charset=UTF-8');
                 <a class="nav-link active" href="#shift" data-toggle="tab"><i class="material-icons">calendar_view_day</i> Lịch trực</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#salary" data-toggle="tab"><i class="material-icons">attach_money</i> Lương</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="#information" data-toggle="tab"><i class="material-icons">face</i> Thông tin</a>
               </li>
             </ul>
@@ -184,11 +181,48 @@ header('Content-Type: text/html; charset=UTF-8');
 			  </tbody>
 			</table>
           </div>
-          <div class="tab-pane" id="salary">
-            <p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
-          </div>
           <div class="tab-pane" id="information">
-            <p> I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
+            <nav aria-label="breadcrumb" role="navigation">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item"><a href="#">Thông tin</a></li>
+			    <li class="breadcrumb-item active" aria-current="page"></li>
+			  </ol>
+			</nav>
+			<table class="table table-hover table-bordered">
+			  <thead>
+				<tr>
+					<th colspan="7"><strong>THÔNG TIN CHI TIẾT</strong></th>
+				</tr>
+			  </thead>
+			  <tbody>
+			  	<tr>
+			  		 <th>Mã</th>
+			  		 <th>Họ tên</th>
+			  		 <th>Số CMND</th>
+			  		 <th>Số điện thoại</th>
+			  		 <th>Địa chỉ</th>
+			  		 <th>Công việc</th>
+			  		 <th>Lương</th>
+			  	</tr>
+			  	<?php 
+			  		$info_sel = "SELECT employees.*, COUNT(shifts.salaryOfShift)*shifts.salaryOfShift AS luong FROM employees INNER JOIN shifts ON shifts.empAccount=employees.account WHERE account = '".$_SESSION['account']."'";
+			  		$info_que = mysqli_query($conn, $info_sel);
+			  		if ($info_que->num_rows > 0) {
+			  			while ($row1 = mysqli_fetch_assoc($info_que)) {
+			  			?>
+			  			<td><?php echo $row1['id']; ?></td>
+			  			<td><?php echo $row1['fullname']; ?></td>
+			  			<td><?php echo $row1['id_num']; ?></td>
+			  			<td><?php echo $row1['phone']; ?></td>
+			  			<td><?php echo $row1['address']; ?></td>
+			  			<td><?php echo $row1['job']; ?></td>
+			  			<td><?php echo number_format($row1['luong'], 0); ?>đ</td>
+			  			<?php
+			  			}
+			  		}
+			  	 ?>
+			  </tbody>
+			</table>
           </div>
         </div>
       </div>
