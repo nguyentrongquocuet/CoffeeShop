@@ -63,317 +63,138 @@ header('Content-Type: text/html; charset=UTF-8');
         </div>
       </div>
     </nav>
-      <main role="main" class="container md">                                  
-        <div class="my-3 p-3 bg-white rounded shadow-sm">
-          <div class="card card-nav-tabs card-plain">
-            <div class="card-header card-header-warning">
-                <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-                <div class="nav-tabs-navigation">
-                    <div class="nav-tabs-wrapper">
-                        <ul class="nav nav-tabs" data-tabs="tabs">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#employee" data-toggle="tab"><i class="material-icons">person</i>Nhân viên</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#shift" data-toggle="tab"><i class="material-icons">assignment</i>Lịch trực</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#salary" data-toggle="tab"><i class="material-icons">attach_money</i>Lương</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div><div class="card-body ">
-                <div class="tab-content text-center">
-                    <div class="tab-pane active" id="employee">
-                        <nav aria-label="breadcrumb" role="navigation">
-                        <ol class="breadcrumb">
-                          <li class="breadcrumb-item"><a href="#">Nhân viên</a></li>
-                          <li class="breadcrumb-item active" aria-current="page">Thông tin chi tiết</li>
-                        </ol>
-                      </nav>
-                      <div class="col-md">
-		                <div class="rotating-card-container manual-flip" style="margin-bottom: 30px;">
-		                  <div class="card card-rotate">
-		                    <div class="front front-background" style="background-image: url(&quot;assets/images/cover.jpg&quot;); width: 350px;">
-		                      <div class="card-body">
-		                        <h3 class="card-title">Thông tin cá Nhân</h3>
-		                        <div class="stats text-center">
-		                          <button type="button" name="button" class="btn btn-success btn-fill btn-round btn-rotate">
-		                            <i class="material-icons">refresh</i> Xem
-		                          <div class="ripple-container"></div></button>
-		                        </div>
-		                      </div>
-		                    </div>
-		                    <div class="back back-background" style="background-image: url(&quot;assets/images/cover.jpg&quot;); width: 350px;">
-		                      <div class="card-body">
-		                        <?php
-						    	include ('sql_conn.php');
-
-						    	$selectEmp = "SELECT * FROM employees WHERE account = '".$_SESSION['account']."'";
-						    	$selectEmp_query = mysqli_query($conn, $selectEmp);
-
-						    	if ($selectEmp_query->num_rows > 0) {
-						    		while ($row = mysqli_fetch_assoc($selectEmp_query)) {
-						    			echo '<h3 class="card-title">
-						                          '.$row["fullname"].'
-						                        </h3>
-						                        <p class="card-description">
-						                        Số CMND: '.$row["id_num"].' <br>
-						                        Địa chỉ: '.$row["address"].' <br>
-						                        Số điện thoại: '.$row["phone"].' <br>
-						                        Công việc: '.$row["job"].' <br>
-						                        Năm vào làm: '.$row["start"].' <br>
-						                        </p>
-						                        <div class="stats text-center">
-						                          <button type="button" name="button" class="btn btn-primary btn-fill btn-round btn-rotate">
-						                            <i class="material-icons">refresh</i> Trở lại
-						                          <div class="ripple-container"></div></button>
-						                        </div>';
-						    		}
-						    	}
-						    ?>
-		                      </div>
-		                    </div>
-		                  </div>
-		                </div>
-		              </div>
-                    </div>
-                    <div class="tab-pane" id="shift">
-                      <nav aria-label="breadcrumb" role="navigation">
-                        <ol class="breadcrumb">
-                          <li class="breadcrumb-item"><a href="#">Lịch trực</a></li>
-                          <li class="breadcrumb-item active" aria-current="page">Đăng ký trực</li>
-                        </ol>
-                      </nav>
-                      <hr>
-                        <form method="post" style="text-align: left;">
-						  <div class="form-group">
-						  	<label for="shiftOfDay">Chọn ca</label>
-						  	<div class="col-md-8" id="shiftOfDay">
-						    <div class="form-check form-check-inline">
-						      <label class="form-check-label">
-						          <input class="form-check-input" type="checkbox" value="Ca 1" id="shift1" name="shift[]">
-						          Ca 1 (6:00 - 10:00)
-						          <span class="form-check-sign">
-						            <span class="check"></span>
-						          </span>
-						      </label>
-						    </div>
-						    <div class="form-check form-check-inline">
-						      <label class="form-check-label">
-						          <input class="form-check-input" type="checkbox" value="Ca 2" id="shift2" name="shift[]">
-						          Ca 2 (10:00 - 14:00)
-						          <span class="form-check-sign">
-						            <span class="check"></span>
-						          </span>
-						      </label>
-						    </div>
-						    <div class="form-check form-check-inline">
-						      <label class="form-check-label">
-						          <input class="form-check-input" type="checkbox" value="Ca 3" id="shift3" name="shift[]">
-						          Ca 3 (14:00 - 18:00)
-						          <span class="form-check-sign">
-						            <span class="check"></span>
-						          </span>
-						      </label>
-						    </div>
-						    <div class="form-check form-check-inline">
-						      <label class="form-check-label">
-						          <input class="form-check-input" type="checkbox" value="Ca 4" id="shift4" name="shift[]">
-						          Ca 4 (18:00 - 22:00)
-						          <span class="form-check-sign">
-						            <span class="check"></span>
-						          </span>
-						      </label>
-						    </div>
-						    
-							</div>
-						  </div>
-						  <label for="dayOfWeek">Chọn ngày</label>
-						  	<div class="col-md-8" id="dayOfWeek">
-						    <div class="form-check form-check-inline">
-						      <label class="form-check-label">
-						          <input class="form-check-input" type="checkbox" value="2" id="checkbox1" name="day[]">
-						          Thứ 2
-						          <span class="form-check-sign">
-						            <span class="check"></span>
-						          </span>
-						      </label>
-						    </div>
-						    <div class="form-check form-check-inline">
-						      <label class="form-check-label">
-						          <input class="form-check-input" type="checkbox" value="3" id="checkbox2" name="day[]">
-						          Thứ 3
-						          <span class="form-check-sign">
-						            <span class="check"></span>
-						          </span>
-						      </label>
-						    </div>
-						    <div class="form-check form-check-inline">
-						      <label class="form-check-label">
-						          <input class="form-check-input" type="checkbox" value="4" id="checkbox3" name="day[]">
-						          Thứ 4
-						          <span class="form-check-sign">
-						            <span class="check"></span>
-						          </span>
-						      </label>
-						    </div>
-						    <div class="form-check form-check-inline">
-						      <label class="form-check-label">
-						          <input class="form-check-input" type="checkbox" value="5" id="checkbox4" name="day[]">
-						          Thứ 5
-						          <span class="form-check-sign">
-						            <span class="check"></span>
-						          </span>
-						      </label>
-						    </div>
-						    <div class="form-check form-check-inline">
-						      <label class="form-check-label">
-						          <input class="form-check-input" type="checkbox" value="6" id="checkbox5" name="day[]">
-						          Thứ 6
-						          <span class="form-check-sign">
-						            <span class="check"></span>
-						          </span>
-						      </label>
-						    </div>
-						    <div class="form-check form-check-inline">
-						      <label class="form-check-label">
-						          <input class="form-check-input" type="checkbox" value="7" id="checkbox6" name="day[]">
-						          Thứ 7
-						          <span class="form-check-sign">
-						            <span class="check"></span>
-						          </span>
-						      </label>
-						    </div>
-						    <div class="form-check form-check-inline">
-						      <label class="form-check-label">
-						          <input class="form-check-input" type="checkbox" value="8" id="checkbox7" name="day[]">
-						          Chủ nhật
-						          <span class="form-check-sign">
-						            <span class="check"></span>
-						          </span>
-						      </label>
-						    </div>
-						</div>
-						<div class="row">
-                            <div class="col-auto mr-auto"> </div>
-                            <div class="col-auto">
-						  <button type="submit" class="btn btn-success" name="register">Đăng ký</button>
-							</div>
-						</div>
-						</form>
-						<?php
-							include 'sql_conn.php';
-							error_reporting(E_PARSE);
-							if (isset($_POST["register"])) {
-								if (!empty($_POST["shift"])) {
-									foreach ($_POST["shift"] as $shifts) {
-										if (!empty($_POST["day"])) {
-											foreach ($_POST["day"] as $day) {
-												$check = "SELECT shiftName, dayOfShift FROM shifts WHERE empAccount ='".$_SESSION['account']."' AND shiftName='".$shifts."' AND dayOfShift='".$day."'";
-												$check_query = mysqli_query($conn, $check);
-												if ($check_query->num_rows > 0)
-													echo "<script>alert('Ca trực bị trùng!');</script>";
-												else{
-													$addShift = "INSERT INTO shifts (shiftName, dayOfShift, empAccount, salaryOfShift) VALUES ('".$shifts."', '".$day."', '".$_SESSION["account"]."', '100000')";
-													$query0 = mysqli_query($conn, $addShift);
-													}
-												}
-											}
-										}
-									}
-								}
-						?>
-                      <nav aria-label="breadcrumb" role="navigation">
-                        <ol class="breadcrumb">
-                          <li class="breadcrumb-item"><a href="#">Lịch trực</a></li>
-                          <li class="breadcrumb-item active" aria-current="page">Danh sách ca trực</li>
-                        </ol>
-                      </nav>
-                      <table class="table table-hover ">
-					  <thead>
-					    <tr>
-					      <th scope="col-md-5">Ca</th>
-					      <th scope="col-md-5">Thứ</th>
-					      <th scope="col-md-2" class="text-right">Xóa</th>
-					    </tr>
-					  </thead>
-					  <tbody>
-						    <?php
-						    	include 'sql_conn.php';
-						    	// error_reporting(E_PARSE);
-						    	$selectShift = "SELECT id, shiftName, dayOfShift FROM shifts WHERE empAccount = '".$_SESSION['account']."'";
-						    	$selectShift_Result = mysqli_query($conn, $selectShift);
-						    	if ($selectShift_Result->num_rows > 0) {
-						    		while ($row = mysqli_fetch_assoc($selectShift_Result)) {
-						    			echo '<tr><th>'.$row['shiftName'].'</th>
-						    				<td>'.$row['dayOfShift'].'</td>
-						    				<td class="text-right">
-						    				<form method="post">
-                                  <button type="submit" rel="tooltip" class="btn btn-danger btn-sm" name="delBtn1'.$row["id"].'">
-                                                              <i class="material-icons">delete</i>
-                                                          </button></form></td></tr>';
-
-                                                  $deleteBtn1 = "delBtn1".$row['id'];
-                                                    if (isset($_POST[$deleteBtn1])) { //Kiểm tra nút xóa có được nhấn hay chưa
-                                                      $del = "DELETE FROM shifts WHERE id = '".$row['id']."'";
-                                                      $del_query = mysqli_query($conn, $del); //Thực thi câu lệnh xóa
-                                                      echo '<script type="text/javascript">
-                                                            window.location.href = "emp.php";
-                                                            </script>'; //Dùng JS để load lại page sau khi xóa  	
-                                        }
-						    		}
-						    	}
-
-						    ?>
-					  </tbody>
-					</table>
-                    </div>
-                    <div class="tab-pane" id="salary">
-                      <nav aria-label="breadcrumb" role="navigation">
-                        <ol class="breadcrumb">
-                          <li class="breadcrumb-item"><a href="#">Lương</a></li>
-                          <li class="breadcrumb-item active" aria-current="page">Lương nhân viên</li>
-                        </ol>
-                      </nav>
-                      <table class="table table-hover table-bordered" name="salary">
-                        <thead>
-                          <tr>
-                            <th scope="col">STT</th>
-                            <th scope="col">Tên nhân viên</th>
-                            <th scope="col">Số ca trực/Tháng</th>
-                            <th scope="col">Lương</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <?php
-                            include 'sql_conn.php';
-                            $createView = "CREATE VIEW ".$_SESSION['account']." AS
-                                        SELECT b.fullname as fullname, b.id as id, COUNT(a.dayOfShift) as soca, COUNT(a.dayOfShift)*a.salaryOfShift as tongtien FROM shifts as a, employees as b WHERE a.empAccount = b.account AND b.account='".$_SESSION['account']."'"; 
-                            $createView_query = mysqli_query($conn, $createView);                  
-                            $find = "SELECT * FROM ".$_SESSION['account']."";    
-                            $findQuery = mysqli_query($conn, $find); //Thực hiện câu truy vấn
-                              if (mysqli_num_rows($findQuery) > 0) { //Kiểm tra số dòng
-                                while ($rows = mysqli_fetch_assoc($findQuery)) {
-                                      echo '<tr><td>'.$rows["id"].'</td>
-                                           <td>'.$rows["fullname"].'</td>
-                                           <td>'.$rows["soca"].'</td>
-                                           <td>'.$rows["tongtien"].' VNĐ</td></tr>';
-                              }
-                            }
-                            $dropView = "DROP VIEW ".$_SESSION['account']."";
-                            $dropView_query = mysqli_query($conn, $dropView);
-                          ?>
-                        </tbody>
-                      </table>
-                    </div>
-                </div>
-            </div>
+<main role="main" class="container md">                                  
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <div class="card card-nav-tabs card-plain">
+      <div class="card-header card-header-warning">
+        <div class="nav-tabs-navigation">
+          <div class="nav-tabs-wrapper">
+            <ul class="nav nav-tabs" data-tabs="tabs">
+              <li class="nav-item">
+                <a class="nav-link active" href="#shift" data-toggle="tab"><i class="material-icons">calendar_view_day</i> Lịch trực</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#salary" data-toggle="tab"><i class="material-icons">attach_money</i> Lương</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#information" data-toggle="tab"><i class="material-icons">face</i> Thông tin</a>
+              </li>
+            </ul>
           </div>
-          
         </div>
-      </main>
+      </div>
+      <div class="card-body ">
+        <div class="tab-content text-center">
+          <div class="tab-pane active" id="shift">
+            <nav aria-label="breadcrumb" role="navigation">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item"><a href="#">Lịch trực</a></li>
+			    <li class="breadcrumb-item active" aria-current="page">Đăng ký ca trực</li>
+			  </ol>
+			</nav>
+			<form method="get" action="reg_shift.php" class="text-left">
+			  <div class="form-group">
+			  	<label>Chọn ngày </label><br>
+			  <?php 
+			  	for ($i = 2; $i < 9 ; $i++) { 
+			  	  if ($i==8)
+			  	  	$day = "Chủ nhật";
+			  	  else
+			  	  	$day = "Thứ ".$i;
+			  	?>
+			  	<div class="form-check form-check-inline">
+				  <label class="form-check-label">
+				    <input class="form-check-input" type="checkbox" id="day" name="day[]" value="<?php echo $i; ?>"><?php echo $day; ?>
+				    <span class="form-check-sign">
+				        <span class="check"></span>
+				    </span>
+				  </label>
+				</div>
+			  	<?php
+			  	}
+			   ?>
+			  </div>
+			  <div class="form-group">
+			    <label for="shift">Chọn ca trực</label><br>
+			    <select multiple class="form-control selectpicker col-md-6" name="shift[]" data-style="btn btn-link" id="shift">
+			      <option value="1">Ca 1 (6:00 - 10:00)</option>
+			      <option value="2">Ca 2 (10:00 - 14:00)</option>
+			      <option value="3">Ca 3 (14:00 - 18:00)</option>
+			      <option value="4">Ca 4 (18:00 - 22:00)</option>
+			    </select>
+			  </div>
+			  <div class="form-group">
+			  	<!-- <button class="btn btn-danger" type="reset">Chọn lại</button> -->
+			    <button class="btn btn-success">Đăng ký</button>
+			  </div>
+			</form>
+			<nav aria-label="breadcrumb" role="navigation">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item"><a href="#">Lịch trực</a></li>
+			    <li class="breadcrumb-item active" aria-current="page">Lịch trực</li>
+			  </ol>
+			</nav>
+			<table class="table table-hover table-bordered">
+			  <thead>
+			  	<tr>
+			  	  <th scope="col"></th>
+			  	  <th scope="col">Thứ 2</th>
+			  	  <th scope="col">Thứ 3</th>
+			  	  <th scope="col">Thứ 4</th>
+			  	  <th scope="col">Thứ 5</th>
+			  	  <th scope="col">Thứ 6</th>
+			  	  <th scope="col">Thứ 7</th>
+			  	  <th scope="col">Chủ nhật</th>
+			  	</tr>
+			  </thead>
+			  <tbody>
+			  	<?php 
+			  		$select_ca = "SELECT DISTINCT shiftName FROM shifts WHERE empAccount = '".$_SESSION['account']."'";
+			  		$query_ca = mysqli_query($conn, $select_ca);
+			  		if ($query_ca->num_rows > 0) {
+			  			while ($row=mysqli_fetch_assoc($query_ca)) {
+			  			?>
+			  			<tr>
+			  				<th>Ca <?php echo $row['shiftName']; ?></th>
+			  				<?php 
+			  					for ($i=2; $i < 9 ; $i++) { 
+			  				?>
+			  				<td>
+			  					<?php 
+			  					 	$select_ngay = "SELECT dayOfShift FROM shifts WHERE shiftName = '".$row['shiftName']."'";
+			  					 	$query_ngay = mysqli_query($conn, $select_ngay);
+			  					 	if ($query_ngay->num_rows > 0) {
+			  					 		while ($rows = mysqli_fetch_assoc($query_ngay)) {
+			  					 			if ($rows['dayOfShift']==$i)
+			  					 				echo '<i class="material-icons" style="color: green;">done</i>';
+			  					 			else
+			  					 				echo "";
+			  					 		}
+			  					 	}
+			  					?>
+			  				</td>
+			  				<?php
+			  					}
+			  				 ?>
+			  			</tr>
+			  			<?php
+			  			}
+			  		}
+			  	 ?>
+			  </tbody>
+			</table>
+          </div>
+          <div class="tab-pane" id="salary">
+            <p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
+          </div>
+          <div class="tab-pane" id="information">
+            <p> I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
+          </div>
+        </div>
+      </div>
+    </div>    
+  </div>
+</main>
   </body>
   <footer class="footer footer-default" >
     <div class="container">

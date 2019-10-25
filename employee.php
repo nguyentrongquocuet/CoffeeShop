@@ -289,46 +289,55 @@ header('Content-Type: text/html; charset=UTF-8');
                         </ol>
                       </nav>
                       <hr>
-                      <table class="table table-hover table-bordered" name="shifts">
-                      <thead>
-                        <tr>
-                          <th scope="col-md-5">Ca</th>
-                          <th scope="col-md-5">Thứ</th>
-                          <th scope="col-auto">Tên nhân viên</th>
-                          <th scope="col-md-2">Xóa</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                          <?php
-                            include 'sql_conn.php';
-                            error_reporting(E_PARSE);
-                            $selectShift = "SELECT a.fullname, b.shiftName, b.dayOfShift, b.id FROM employees as a, shifts as b WHERE a.account = b.empAccount ORDER BY a.fullname";
-                            $selectShift_Result = mysqli_query($conn, $selectShift);
-                            if ($selectShift_Result->num_rows > 0) {
-                              while ($row = mysqli_fetch_assoc($selectShift_Result)) {
-                                echo '<tr><td>'.$row['shiftName'].'</td>
-                                  <td>'.$row['dayOfShift'].'</td>
-                                  <th>'.$row['fullname'].'</th>
-                                  <td>
-                                  <form method="post">
-                                  <button type="submit" rel="tooltip" class="btn btn-danger btn-sm" name="delBtn1'.$row["id"].'">
-                                                              <i class="material-icons">delete</i>
-                                                          </button></form></td></tr>';
-
-                                                  $deleteBtn1 = "delBtn1".$row['id'];
-                                                    if (isset($_POST[$deleteBtn1])) { //Kiểm tra nút xóa có được nhấn hay chưa
-                                                      $del = "DELETE FROM shifts WHERE id = '".$row['id']."'";
-                                                      $del_query = mysqli_query($conn, $del); //Thực thi câu lệnh xóa
-                                                      echo '<script type="text/javascript">
-                                                            window.location.href = "employee.php";
-                                                            </script>'; //Dùng JS để load lại page sau khi xóa
-                                                        }
-                              }
-                            }
-
-                          ?>
-                      </tbody>
-                    </table>  
+<table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Thứ 2</th>
+            <th scope="col">Thứ 3</th>
+            <th scope="col">Thứ 4</th>
+            <th scope="col">Thứ 5</th>
+            <th scope="col">Thứ 6</th>
+            <th scope="col">Thứ 7</th>
+            <th scope="col">Chủ nhật</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php 
+            $select_ca = "SELECT DISTINCT shiftName FROM shifts";
+            $query_ca = mysqli_query($conn, $select_ca);
+            if ($query_ca->num_rows > 0) {
+              while ($row=mysqli_fetch_assoc($query_ca)) {
+              ?>
+              <tr>
+                <th>Ca <?php echo $row['shiftName']; ?></th>
+                <?php 
+                  for ($i=2; $i < 9 ; $i++) { 
+                ?>
+                <td>
+                  <?php 
+                    $select_ngay = "SELECT shifts.dayOfShift, employees.fullname FROM shifts INNER JOIN employees ON shifts.empAccount=employees.account WHERE shiftName = '".$row['shiftName']."'";
+                    $query_ngay = mysqli_query($conn, $select_ngay);
+                    if ($query_ngay->num_rows > 0) {
+                      while ($rows = mysqli_fetch_assoc($query_ngay)) {
+                        if ($rows['dayOfShift']==$i)
+                          echo $rows['fullname'].'<br>';
+                        else
+                          echo "";
+                      }
+                    }
+                  ?>
+                </td>
+                <?php
+                  }
+                 ?>
+              </tr>
+              <?php
+              }
+            }
+           ?>
+        </tbody>
+      </table> 
                     </div>
                     <div class="tab-pane" id="salary">
                       <nav aria-label="breadcrumb" role="navigation">
