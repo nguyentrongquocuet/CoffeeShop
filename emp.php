@@ -158,7 +158,7 @@ header('Content-Type: text/html; charset=UTF-8');
 			  				?>
 			  				<td>
 			  					<?php 
-			  					 	$select_ngay = "SELECT dayOfShift FROM shifts WHERE shiftName = '".$row['shiftName']."'";
+			  					 	$select_ngay = "SELECT dayOfShift FROM shifts WHERE shiftName = '".$row['shiftName']."' AND empAccount = '".$_SESSION['account']."'";
 			  					 	$query_ngay = mysqli_query($conn, $select_ngay);
 			  					 	if ($query_ngay->num_rows > 0) {
 			  					 		while ($rows = mysqli_fetch_assoc($query_ngay)) {
