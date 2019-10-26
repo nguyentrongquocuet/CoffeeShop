@@ -1,9 +1,9 @@
 <?php
 header('Content-Type: application/json');
 
-$conn = mysqli_connect("localhost","root","","nlcs");
+include 'sql_conn.php';
 
-$sqlQuery = "SELECT * FROM bill_detail INNER JOIN product ON product.id=bill_detail.id_product";
+$sqlQuery = "SELECT SUM(quantity) AS quantity, product FROM bill_detail GROUP BY product";
 
 $result = mysqli_query($conn,$sqlQuery);
 

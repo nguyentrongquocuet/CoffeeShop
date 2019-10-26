@@ -199,16 +199,16 @@ header('Content-Type: text/html; charset=UTF-8');
                                       function (data)
                                       {
                                           console.log(data);
-                                           var name = [];
+                                           var product = [];
                                           var quantity = [];
 
                                           for (var i in data) {
-                                              name.push(data[i].name);
+                                              product.push(data[i].product);
                                               quantity.push(data[i].quantity);
                                           }
 
                                           var chartdata = {
-                                              labels: name,
+                                              labels: product,
                                               datasets: [
                                                   {
                                                       label: 'Số lượng',
