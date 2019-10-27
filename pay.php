@@ -31,6 +31,6 @@
             unset($_SESSION['cart'][$row0['id']]);
         }
     }
-    // $_SESSION['paid'] = "yes";
+    $_SESSION['paid'] = "yes";
     header('Location: index.php');	
 ?>

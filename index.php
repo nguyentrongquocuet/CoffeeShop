@@ -16,6 +16,10 @@
     <!-- Material Kit CSS -->
     <link href="assets/css/material-kit.css?v=2.1.1" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/plus_minus.css">
+    <!-- SweetAlert2 -->
+    <script src="assets/js/sweetalert2.all.min.js"></script>
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
     <!-- Card a href style -->
     <style type="text/css">
       a.custom-card,
@@ -177,10 +181,10 @@
   window.onscroll = function() {scrollFunction()};
 
   function scrollFunction() {
-    if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+    if (document.body.scrollTop >= 0 || document.documentElement.scrollTop >= 0) {
       mybutton.style.display = "block";
     } else {
-      mybutton.style.display = "none";
+      mybutton.style.display = "block";
     }
   }
   </script>
@@ -240,6 +244,36 @@
     </div>
   </div>
   </main>
+
+<?php 
+  if (isset($_SESSION['paid'])) {
+    if ($_SESSION['paid']=='yes') {
+    ?>
+      <script type="text/javascript">
+        Swal.fire({
+        type: 'success',
+        title: 'Thanh toán thành công!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      </script>
+    <?php
+    }else{
+      ?>
+      <script type="text/javascript">
+        Swal.fire({
+          type: 'error',
+          title: 'Thanh toán thất bại!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      </script>
+      <?php
+    }
+    unset($_SESSION['paid']);
+  }
+ ?>
+
   <footer class="footer footer-default" >
     <div class="container">
       <div class="copyright float-left">

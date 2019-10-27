@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2019 at 02:39 PM
+-- Generation Time: Oct 24, 2019 at 04:36 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -34,6 +34,28 @@ CREATE TABLE `bill` (
   `empaccount` varchar(20) COLLATE utf8_vietnamese_ci NOT NULL,
   `total` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+
+--
+-- Dumping data for table `bill`
+--
+
+INSERT INTO `bill` (`id`, `time`, `empaccount`, `total`) VALUES
+(0, '2019-10-24 07:10:25', 'giangphan', 341000),
+(1, '2019-10-24 07:10:45', 'giangphan', 356000),
+(2, '2019-10-24 07:10:50', 'giangphan', 45000),
+(3, '2019-10-24 07:10:55', 'giangphan', 135000),
+(4, '2019-10-24 07:10:14', 'giangphan', 145000),
+(5, '2019-10-24 07:10:23', 'giangphan', 145000),
+(6, '2019-10-24 07:10:39', 'tuongtran', 74000),
+(7, '2019-10-24 07:10:46', 'tuongtran', 195000),
+(8, '2019-10-24 07:10:54', 'tuongtran', 184000),
+(9, '2019-10-24 07:10:00', 'tuongtran', 116000),
+(10, '2019-10-24 07:10:21', 'luongle', 323000),
+(11, '2019-10-24 07:10:28', 'luongle', 118000),
+(12, '2019-10-24 07:10:34', 'luongle', 117000),
+(13, '2019-10-24 07:10:37', 'luongle', 29000),
+(14, '2019-10-24 07:10:05', 'giangphan', 3900000),
+(15, '2019-10-24 07:10:53', 'giangphan', 290000);
 
 -- --------------------------------------------------------
 
@@ -67,7 +89,8 @@ INSERT INTO `employees` (`id`, `fullname`, `account`, `password`, `id_num`, `add
 (6, 'Nguyá»…n Minh Thuáº­t', 'thuatnguyen', '4aa49a57b3c11757e7e391f52347572bb837597f', '321456987', 'VÅ©ng LiÃªm, VÄ©nh Long', '0929090507', 'Phá»¥c vá»¥', '2018', NULL),
 (7, 'Há»“ KhÃ¡nh Duy', 'duyho', '00fb8183479aed9947aebded28b36c57de7eb16b', '321546789', 'Long Má»¹, Háº­u Giang', '0929262646', 'Phá»¥c vá»¥', '2018', NULL),
 (8, 'Tráº§n VÄ©nh TÆ°á»ng', 'tuongtran', 'e03a3b0df7ef2aa513131811010f32f66cfa8e06', '312645978', 'Ã” MÃ´n, Cáº§n ThÆ¡', '0907047617', 'Order', '2018', 'order'),
-(11, 'LÃª Thanh LÆ°Æ¡ng', 'luongle', 'aa93e733a85dcd3e134fca45d926427e19a05afb', '121345648', 'Káº¿ SÃ¡ch, SÃ³c TrÄƒng', '0824521572', 'Order', '2018', 'order');
+(11, 'LÃª Thanh LÆ°Æ¡ng', 'luongle', 'aa93e733a85dcd3e134fca45d926427e19a05afb', '121345648', 'Káº¿ SÃ¡ch, SÃ³c TrÄƒng', '0824521572', 'Order', '2018', 'order'),
+(12, 'Tráº§n   SÄ© Äáº¡t', 'dattran', 'fbd0b9c3677241899bad77be49dcbb69471a7ef5', '515654654', 'BÃ¬nh  Minh, VÄ©nh Long', '0834599565', 'Cháº¿ biáº¿n', '2018', '');
 
 -- --------------------------------------------------------
 
@@ -181,6 +204,7 @@ INSERT INTO `supplier` (`id`, `name`, `address`, `phone`, `material`, `unit`, `c
 --
 ALTER TABLE `bill`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`),
   ADD KEY `empaccount` (`empaccount`);
 
 --
@@ -188,32 +212,29 @@ ALTER TABLE `bill`
 --
 ALTER TABLE `employees`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `password_2` (`password`),
-  ADD KEY `account` (`account`),
-  ADD KEY `password` (`password`),
-  ADD KEY `password_3` (`password`),
-  ADD KEY `fullname` (`fullname`);
+  ADD UNIQUE KEY `id` (`id`),
+  ADD UNIQUE KEY `account` (`account`,`id_num`,`phone`);
 
 --
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `name` (`name`);
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- Indexes for table `shifts`
 --
 ALTER TABLE `shifts`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `shiftName` (`shiftName`),
   ADD KEY `empAccount` (`empAccount`);
 
 --
 -- Indexes for table `supplier`
 --
 ALTER TABLE `supplier`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`,`phone`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -223,7 +244,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -242,6 +263,22 @@ ALTER TABLE `shifts`
 --
 ALTER TABLE `supplier`
   MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `bill`
+--
+ALTER TABLE `bill`
+  ADD CONSTRAINT `bill_ibfk_1` FOREIGN KEY (`empaccount`) REFERENCES `employees` (`account`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Constraints for table `shifts`
+--
+ALTER TABLE `shifts`
+  ADD CONSTRAINT `shifts_ibfk_1` FOREIGN KEY (`empAccount`) REFERENCES `employees` (`account`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
