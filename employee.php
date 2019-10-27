@@ -289,6 +289,9 @@ header('Content-Type: text/html; charset=UTF-8');
                         </ol>
                       </nav>
                       <hr>
+                      <p class="text-left"><strong>Chú thích: </strong><strong style="color: red;">Nhân viên chế biến</strong> /
+                      <strong style="color: green;">Nhân viên order</strong> / 
+                      <strong style="color: blue;">Nhân viên phục vụ</strong></p>
 <table class="table table-hover table-bordered">
         <thead>
           <tr>
@@ -316,12 +319,23 @@ header('Content-Type: text/html; charset=UTF-8');
                 ?>
                 <td>
                   <?php 
-                    $select_ngay = "SELECT shifts.dayOfShift, employees.fullname FROM shifts INNER JOIN employees ON shifts.empAccount=employees.account WHERE shiftName = '".$row['shiftName']."'";
+                    $select_ngay = "SELECT shifts.dayOfShift, employees.fullname, employees.job FROM shifts INNER JOIN employees ON shifts.empAccount=employees.account WHERE shiftName = '".$row['shiftName']."'";
                     $query_ngay = mysqli_query($conn, $select_ngay);
                     if ($query_ngay->num_rows > 0) {
                       while ($rows = mysqli_fetch_assoc($query_ngay)) {
                         if ($rows['dayOfShift']==$i)
-                          echo $rows['fullname'].'<br>';
+                          switch ($rows['job']) {
+                            case 'Chế biến':
+                              echo '<p style="color: red;">'.$rows['fullname'].'</p>';
+                              break;
+                            case 'Order':
+                              echo '<p style="color: green;">'.$rows['fullname'].'</p>';
+                              break;
+                            default:
+                              echo '<p style="color: blue;">'.$rows['fullname'].'</p>';
+                              break;
+                          }
+                          
                         else
                           echo "";
                       }
