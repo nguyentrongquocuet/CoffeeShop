@@ -16,7 +16,7 @@
     		
     	}
     }
-
+if ($_SESSION['cart']['total'] > 0) {
 	$add_bill = "INSERT INTO bill VALUES ('".$id."', '".date("Y-m-d h:m:s")."', '".$_SESSION['account']."', '".$_SESSION['cart']['total']."')";
     $add_bill_query = mysqli_query($conn, $add_bill); //Them vao bang bill
     echo $add_bill;
@@ -35,6 +35,8 @@
         $_SESSION['paid'] = "no";
       }
     }
-    
-    header('Location: index.php');	
+}
+else
+    $_SESSION['paid'] = "no";    
+header('Location: index.php');	
 ?>
