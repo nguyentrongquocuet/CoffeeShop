@@ -210,6 +210,7 @@
             </thead>
             <tbody>      
           <?php
+            error_reporting(0);
             $total = 0;
             foreach($_SESSION['cart'] as $key=>$value){
             $cart_select = "SELECT * FROM product WHERE id = '".$key."'";
