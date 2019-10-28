@@ -14,6 +14,10 @@ header('Content-Type: text/html; charset=UTF-8');
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- Material Kit CSS -->
     <link href="assets/css/material-kit.css?v=2.1.1" rel="stylesheet" />
+        <!-- SweetAlert2 -->
+    <script src="assets/js/sweetalert2.all.min.js"></script>
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-primary sticky-top">
@@ -160,6 +164,12 @@ header('Content-Type: text/html; charset=UTF-8');
     var start = document.getElementById('start').value;
 
     if (fullname!="" && account!="" && password!="" && id_num!="" && address!="" && phone!="" && job!="" && start!="") {
+      Swal.fire({
+        type: 'success',
+        title: 'Đã thêm nhân viên',
+        showConfirmButton: false,
+        timer: 1500
+      });
       return true;
     }else{
       alert("Vui lòng điền đủ thông tin có dấu *");
@@ -227,13 +237,24 @@ header('Content-Type: text/html; charset=UTF-8');
         ?>
          <form method="get" action="delete_emp.php">
           <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#edit<?php echo $row['id']; ?>"><i class="material-icons">edit</i></button>
-          <button type="submit" class="btn btn-sm btn-danger" name="delete" value="<?php echo $row['id']; ?>"><i class="material-icons">delete</i></button>
+          <button type="submit" class="btn btn-sm btn-danger" name="delete" value="<?php echo $row['id']; ?>" onclick="return del()"><i class="material-icons">delete</i></button>
          </form>
         <?php
           }
         ?>
       </td>
     </tr>
+    <script type="text/javascript">
+      function del(){
+        var del = confirm("Bạn có thực sự muốn xóa nhân viên này?");
+        if (del) {
+          return true
+        }else{
+          return false
+        }
+        return false
+      }
+    </script>
     <!-- modal sua thong tin nhan vien -->
     <div class="modal fade" id="edit<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
       <div class="modal-dialog" role="document">

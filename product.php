@@ -14,6 +14,10 @@ header('Content-Type: text/html; charset=UTF-8');
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- Material Kit CSS -->
     <link href="assets/css/material-kit.css?v=2.1.1" rel="stylesheet" />
+    <!-- SweetAlert2 -->
+    <script src="assets/js/sweetalert2.all.min.js"></script>
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
   </head>
   <body>
   <nav class="navbar navbar-expand-lg bg-primary sticky-top">
@@ -177,8 +181,9 @@ header('Content-Type: text/html; charset=UTF-8');
     var photo = document.getElementById('pPhoto').value;
 
     if (name!="" && price!="" && species!="" && photo!="")
-      if (price >= 0)
+      if (price >= 0){
         return true;
+      }
       else{
         alert('Giá không được nhỏ hơn 0đ');
         return false;
@@ -190,6 +195,34 @@ header('Content-Type: text/html; charset=UTF-8');
     return false;
   }
 </script>
+<?php
+  if (isset($_SESSION['addP'])) {
+    if ($_SESSION['addP']=="yes") {
+    ?>
+    <script type="text/javascript">
+      Swal.fire({
+        type: 'success',
+        title: 'Đã thêm sản phẩm!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    </script>
+    <?php
+    } else {
+    ?>
+    <script type="text/javascript">
+      Swal.fire({
+        type: 'error',
+        title: 'Chưa thêm sản phẩm!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    </script>
+    <?php
+    }
+    unset($_SESSION['addP']);
+  }
+?>
                           <!-- Bảng hiển thị danh sách sản phẩm -->
                           <table class="table table-hover" name="productTable">
                             <thead>
@@ -390,7 +423,7 @@ header('Content-Type: text/html; charset=UTF-8');
                             <li class="breadcrumb-item active" aria-current="page">Nhập hàng</li>
                           </ol>
                         </nav>
-                        <form method="POST">
+                        <form method="get" action="add_supplier.php" onsubmit="return validateSup()">
                             <div class="form-row">
                               <div class="col-4">
                                 <label class="bmd-label-static">Tên nhà cung cấp*</label>
@@ -431,23 +464,38 @@ header('Content-Type: text/html; charset=UTF-8');
                               <div class="row">
                                 <div class="col-auto mr-auto"> </div>
                                 <div class="col-auto">
-                                <button class="btn btn-success" type="submit" name="addSupp"><i class="material-icons">add</i> THÊM</button>
+                                <button class="btn btn-success" type="submit"><i class="material-icons">add</i> THÊM</button>
                                 </div>
                               </div>
                           </form>
-                          <?php
-                            include('sql_conn.php');
-                            error_reporting(0);
-                            if (isset($_POST['addSupp'])) {
-                              if ($_POST['name'] != "" && $_POST['phone'] != "" && $_POST['address'] != "") {
-                                $addQuery = "INSERT INTO supplier (name, address, phone, material, unit, costs, quantity, remain)
-                                                         value ('".$_POST["name"]."', '".$_POST["address"]."', '".$_POST["phone"]."', '".$_POST["material"]."', '".$_POST["unit"]."', '".$_POST["costs"]."', '".$_POST['quantity']."', '".$_POST['quantity']."')";
-                                $query1 = mysqli_query($conn, $addQuery);
-                              }else{
-                                 echo "<script>alert('Vui lòng điền đủ thông tin các ô có dấu *');</script>";
-                              }
-                            }
-                          ?>
+<?php 
+  if (isset($_SESSION['sup'])) {
+    if ($_SESSION['sup']=="yes") {
+     ?>
+     <script type="text/javascript">
+       Swal.fire({
+        type: 'success',
+        title: 'Đã thêm nhà cung cấp!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+     </script>
+     <?php
+    }else{
+      ?>
+    <script type="text/javascript">
+      Swal.fire({
+        type: 'error',
+        title: 'Thêm nhà cung cấp thất bại!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    </script>
+      <?php
+    }
+    unset($_SESSION['sup']);
+  }
+?>
                           <hr>
                         <nav aria-label="breadcrumb" role="navigation">
                           <ol class="breadcrumb">
@@ -466,7 +514,6 @@ header('Content-Type: text/html; charset=UTF-8');
                                 <th>Nguyên liệu nhập</th>
                                 <th>Số lượng</th>
                                 <th class="text-right">Tổng tiền</th>
-                                <th class="text-right"><b>Thao tác</b></th>
                               </tr>
                             </thead>
                             <tbody>
@@ -487,27 +534,8 @@ header('Content-Type: text/html; charset=UTF-8');
                                           <td>'.$row["material"].'</td>
                                           <td>'.$row['quantity'].' '.$row["unit"].'</td>
                                           <td class="text-right">'.$giaNhap.' đ</td>
-                                          <td class="td-actions text-right">
-                                            <form method="post">
-                                              <!-- <button type="button" rel="tooltip" class="btn btn-success"data-toggle="modal" data-target="#editModal'.$row["id"].'">
-                                                  <i class="material-icons">edit</i>
-                                              </button> -->
-                                              <button type="submit" rel="tooltip" class="btn btn-danger" name="delBtn'.$row["id"].'">
-                                                  <i class="material-icons">close</i>
-                                              </button>
-                                            </form>
-                                          </td>
                                         </tr>
                                         ';
-                                        $deleteBtn = "delBtn".$row['id'];
-                                        if (isset($_POST[$deleteBtn])) { //Kiểm tra nút xóa có được nhấn hay chưa
-                                          $del = "DELETE FROM supplier WHERE id = '".$row['id']."'";
-                                          $del_query = mysqli_query($conn, $del); //Thực thi câu lệnh xóa
-                                          echo '<script type="text/javascript">
-                                                window.location.href = "product.php";
-                                                </script>'; //Dùng JS để load lại page sau khi xóa
-                                            }
-
                                 }
                               }
                               ?>

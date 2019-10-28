@@ -8,6 +8,7 @@
 			$add = "INSERT INTO product (name, species, price, thumb_img) VALUES ('".trim($_GET["pName"])."', '".trim($_GET["pSpecies"])."', '".trim($_GET["pPrice"])."', '".trim($_GET["pPhoto"])."')";
             $add_query = mysqli_query($conn, $add);
             // echo $add;
+            $_SESSION['addP']='yes';
             header('Location: product.php');
           }else{
             echo "<script>alert('Giá phải lớn hơn 0đ');</script>";
