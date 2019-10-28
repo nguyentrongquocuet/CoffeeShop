@@ -23,14 +23,18 @@
 	foreach($_SESSION['cart'] as $key=>$value){
       $cart_select = "SELECT * FROM product WHERE id = '".$key."'";
       $cart_query = mysqli_query($conn, $cart_select);
-      if($cart_query->num_rows > 0)
+      if($cart_query->num_rows > 0){
         while($row0 = mysqli_fetch_assoc($cart_query)){ 
             $add = "INSERT INTO bill_detail VALUES ('".$id."' ,'".$row0['name']."', '".$_SESSION['cart'][$row0['id']]."', '".$_SESSION['cart'][$row0['id']]*$row0['price']."', '".$key."')";
             $add_query = mysqli_query($conn, $add);
             echo $add.'<br>';
             unset($_SESSION['cart'][$row0['id']]);
         }
+        $_SESSION['paid'] = "yes";
+      }else{
+        $_SESSION['paid'] = "no";
+      }
     }
-    $_SESSION['paid'] = "yes";
+    
     header('Location: index.php');	
 ?>
