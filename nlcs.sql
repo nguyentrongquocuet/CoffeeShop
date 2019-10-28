@@ -2,10 +2,10 @@
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 24, 2019 at 04:36 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th10 28, 2019 lúc 08:27 AM
+-- Phiên bản máy phục vụ: 10.4.6-MariaDB
+-- Phiên bản PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `nlcs`
+-- Cơ sở dữ liệu: `nlcs`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bill`
+-- Cấu trúc bảng cho bảng `bill`
 --
 
 CREATE TABLE `bill` (
@@ -36,7 +36,7 @@ CREATE TABLE `bill` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Dumping data for table `bill`
+-- Đang đổ dữ liệu cho bảng `bill`
 --
 
 INSERT INTO `bill` (`id`, `time`, `empaccount`, `total`) VALUES
@@ -55,12 +55,46 @@ INSERT INTO `bill` (`id`, `time`, `empaccount`, `total`) VALUES
 (12, '2019-10-24 07:10:34', 'luongle', 117000),
 (13, '2019-10-24 07:10:37', 'luongle', 29000),
 (14, '2019-10-24 07:10:05', 'giangphan', 3900000),
-(15, '2019-10-24 07:10:53', 'giangphan', 290000);
+(15, '2019-10-24 07:10:53', 'giangphan', 290000),
+(16, '2019-10-25 11:10:09', 'giangphan', 1950000),
+(17, '2019-10-26 09:10:47', 'giangphan', 490000),
+(18, '2019-10-26 09:10:25', 'giangphan', 416000),
+(19, '2019-10-26 09:10:55', 'giangphan', 1210000),
+(20, '2019-10-26 12:10:08', 'giangphan', 203000),
+(21, '2019-10-27 09:10:27', 'giangphan', 29000),
+(22, '2019-10-27 09:10:13', 'giangphan', 465000),
+(23, '2019-10-27 09:10:49', 'tuongtran', 343000),
+(24, '2019-10-27 09:10:30', 'giangphan', 55000),
+(25, '2019-10-27 09:10:12', 'giangphan', 29000),
+(26, '2019-10-27 09:10:45', 'giangphan', 45000),
+(27, '2019-10-27 09:10:41', 'giangphan', 4410000),
+(28, '2019-10-27 09:10:20', 'giangphan', 261000),
+(29, '2019-10-27 09:10:41', 'giangphan', 2900000),
+(30, '2019-10-27 09:10:52', 'luongle', 882000),
+(31, '2019-10-28 07:10:49', 'giangphan', 0),
+(32, '2019-10-28 07:10:56', 'giangphan', 29000),
+(33, '2019-10-28 07:10:53', 'giangphan', 0),
+(34, '2019-10-28 07:10:00', 'giangphan', 0),
+(35, '2019-10-28 07:10:11', 'giangphan', 405000),
+(36, '2019-10-28 09:10:15', 'giangphan', 0),
+(37, '2019-10-28 09:10:48', 'giangphan', 0),
+(38, '2019-10-28 09:10:54', 'giangphan', 39000),
+(39, '2019-10-28 11:10:45', 'giangphan', 0),
+(40, '2019-10-28 11:10:14', 'giangphan', 1255000),
+(41, '2019-10-28 11:10:46', 'giangphan', 540000),
+(42, '2019-10-28 11:10:01', 'giangphan', 522000),
+(43, '2019-10-28 11:10:42', 'giangphan', 0),
+(44, '2019-10-28 11:10:06', 'giangphan', 0),
+(45, '2019-10-28 11:10:18', 'giangphan', 270000),
+(46, '2019-10-28 02:10:11', 'giangphan', 0),
+(47, '2019-10-28 02:10:15', 'giangphan', 0),
+(48, '2019-10-28 02:10:23', 'giangphan', 150000),
+(49, '2019-10-28 02:10:20', 'giangphan', 200000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `employees`
+-- Cấu trúc bảng cho bảng `employees`
 --
 
 CREATE TABLE `employees` (
@@ -77,12 +111,12 @@ CREATE TABLE `employees` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Dumping data for table `employees`
+-- Đang đổ dữ liệu cho bảng `employees`
 --
 
 INSERT INTO `employees` (`id`, `fullname`, `account`, `password`, `id_num`, `address`, `phone`, `job`, `start`, `user_group`) VALUES
 (1, 'Phan Thanh Giáº£ng', 'giangphan', 'a940d8b1b4dbed2f777656fd0d965759d99c8ea9', '331800117', 'Tam BÃ¬nh, VÄ©nh Long', '0868442808', 'Quáº£n lÃ½', '2018', 'admin'),
-(2, 'LÃ¢m VÄƒn Di', 'dilam', 'f502e82c25bba5a06cf68ffa87ecd02371c1a975', '123456789', 'ChÃ¢u ThÃ nh, KiÃªn Giang', '0859711330', 'Cháº¿ biáº¿n', '2018', NULL),
+(2, 'LÃ¢m VÄƒn Di', 'dilam', 'f502e82c25bba5a06cf68ffa87ecd02371c1a975', '123456789', 'ChÃ¢u ThÃ nh, KiÃªn Giang', '0859711330', 'Cháº¿ biáº¿n', '2018', ''),
 (3, 'Nguyá»…n PhÃºc Báº£o Khang', 'khangnguyen', 'c863bacbc71869fc68a88d11b1f8c6d3b2f42ca9', '987654321', 'Mang ThÃ­t, VÄ©nh Long', '0939964344', 'Phá»¥c vá»¥', '2018', NULL),
 (4, 'Tráº§n VÄƒn Khá»Ÿi', 'khoitran', 'cae1b52d0ab8b788a944a94be70dedffa876bd61', '123654987', 'Giá»“ng Riá»ng, KiÃªn Giang', '0392959702', 'Phá»¥c vá»¥', '2018', NULL),
 (5, 'Nguyá»…n ÄÃ¬nh KhÃ¢m', 'khamnguyen', '5f79460e4f906c045759e7bb5580b62aceb2cc85', '123456987', 'Long Má»¹, Háº­u Giang', '0356879141', 'Cháº¿ biáº¿n', '2018', NULL),
@@ -90,12 +124,12 @@ INSERT INTO `employees` (`id`, `fullname`, `account`, `password`, `id_num`, `add
 (7, 'Há»“ KhÃ¡nh Duy', 'duyho', '00fb8183479aed9947aebded28b36c57de7eb16b', '321546789', 'Long Má»¹, Háº­u Giang', '0929262646', 'Phá»¥c vá»¥', '2018', NULL),
 (8, 'Tráº§n VÄ©nh TÆ°á»ng', 'tuongtran', 'e03a3b0df7ef2aa513131811010f32f66cfa8e06', '312645978', 'Ã” MÃ´n, Cáº§n ThÆ¡', '0907047617', 'Order', '2018', 'order'),
 (11, 'LÃª Thanh LÆ°Æ¡ng', 'luongle', 'aa93e733a85dcd3e134fca45d926427e19a05afb', '121345648', 'Káº¿ SÃ¡ch, SÃ³c TrÄƒng', '0824521572', 'Order', '2018', 'order'),
-(12, 'Tráº§n   SÄ© Äáº¡t', 'dattran', 'fbd0b9c3677241899bad77be49dcbb69471a7ef5', '515654654', 'BÃ¬nh  Minh, VÄ©nh Long', '0834599565', 'Cháº¿ biáº¿n', '2018', '');
+(14, 'Tráº§n SÄ© Äáº¡t', 'dattran', 'fbd0b9c3677241899bad77be49dcbb69471a7ef5', '226444232', 'BÃ¬nh Minh, VÄ©nh Long', '0254545444', 'Cháº¿ biáº¿n', '2018', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Cấu trúc bảng cho bảng `product`
 --
 
 CREATE TABLE `product` (
@@ -107,7 +141,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Dumping data for table `product`
+-- Đang đổ dữ liệu cho bảng `product`
 --
 
 INSERT INTO `product` (`id`, `name`, `species`, `price`, `thumb_img`) VALUES
@@ -158,7 +192,7 @@ INSERT INTO `product` (`id`, `name`, `species`, `price`, `thumb_img`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `shifts`
+-- Cấu trúc bảng cho bảng `shifts`
 --
 
 CREATE TABLE `shifts` (
@@ -169,10 +203,99 @@ CREATE TABLE `shifts` (
   `salaryOfShift` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `shifts`
+--
+
+INSERT INTO `shifts` (`id`, `shiftName`, `dayOfShift`, `empAccount`, `salaryOfShift`) VALUES
+(1, '1', '2', 'dilam', 100000),
+(2, '1', '3', 'dilam', 100000),
+(3, '2', '2', 'dilam', 100000),
+(4, '2', '3', 'dilam', 100000),
+(5, '2', '4', 'dilam', 100000),
+(6, '2', '5', 'dilam', 100000),
+(7, '3', '6', 'dilam', 100000),
+(8, '3', '7', 'dilam', 100000),
+(9, '3', '8', 'dilam', 100000),
+(10, '4', '2', 'dilam', 100000),
+(11, '4', '4', 'dilam', 100000),
+(12, '4', '6', 'dilam', 100000),
+(18, '4', '8', 'dilam', 100000),
+(19, '3', '2', 'dilam', 100000),
+(20, '3', '3', 'dilam', 100000),
+(21, '4', '3', 'dilam', 100000),
+(22, '1', '8', 'dilam', 100000),
+(23, '2', '8', 'dilam', 100000),
+(24, '1', '2', 'duyho', 100000),
+(25, '2', '2', 'duyho', 100000),
+(26, '1', '3', 'duyho', 100000),
+(27, '2', '3', 'duyho', 100000),
+(28, '1', '4', 'duyho', 100000),
+(29, '2', '4', 'duyho', 100000),
+(30, '1', '7', 'duyho', 100000),
+(31, '2', '7', 'duyho', 100000),
+(32, '3', '7', 'duyho', 100000),
+(33, '4', '7', 'duyho', 100000),
+(34, '2', '8', 'duyho', 100000),
+(35, '3', '8', 'duyho', 100000),
+(36, '1', '8', 'duyho', 100000),
+(37, '4', '8', 'duyho', 100000),
+(38, '2', '5', 'duyho', 100000),
+(39, '3', '5', 'duyho', 100000),
+(40, '2', '6', 'duyho', 100000),
+(41, '3', '6', 'duyho', 100000),
+(42, '3', '2', 'khamnguyen', 100000),
+(43, '4', '2', 'khamnguyen', 100000),
+(44, '3', '4', 'khamnguyen', 100000),
+(45, '4', '4', 'khamnguyen', 100000),
+(46, '3', '7', 'khamnguyen', 100000),
+(47, '4', '7', 'khamnguyen', 100000),
+(48, '3', '8', 'khamnguyen', 100000),
+(49, '4', '8', 'khamnguyen', 100000),
+(50, '1', '3', 'khamnguyen', 100000),
+(51, '2', '3', 'khamnguyen', 100000),
+(52, '1', '5', 'khamnguyen', 100000),
+(53, '2', '5', 'khamnguyen', 100000),
+(54, '1', '6', 'khamnguyen', 100000),
+(55, '2', '6', 'khamnguyen', 100000),
+(56, '4', '5', 'khoitran', 100000),
+(57, '4', '2', 'khangnguyen', 100000),
+(58, '4', '3', 'khangnguyen', 100000),
+(59, '4', '4', 'khangnguyen', 100000),
+(60, '4', '5', 'khangnguyen', 100000),
+(61, '4', '6', 'khangnguyen', 100000),
+(62, '4', '7', 'khangnguyen', 100000),
+(63, '4', '8', 'khangnguyen', 100000),
+(64, '1', '2', 'tuongtran', 100000),
+(65, '2', '2', 'tuongtran', 100000),
+(66, '1', '3', 'tuongtran', 100000),
+(67, '2', '3', 'tuongtran', 100000),
+(68, '1', '4', 'tuongtran', 100000),
+(69, '2', '4', 'tuongtran', 100000),
+(70, '1', '6', 'tuongtran', 100000),
+(71, '2', '6', 'tuongtran', 100000),
+(72, '1', '7', 'tuongtran', 100000),
+(73, '2', '7', 'tuongtran', 100000),
+(74, '1', '8', 'tuongtran', 100000),
+(75, '2', '8', 'tuongtran', 100000),
+(76, '3', '4', 'tuongtran', 100000),
+(77, '4', '4', 'tuongtran', 100000),
+(78, '3', '5', 'tuongtran', 100000),
+(79, '4', '5', 'tuongtran', 100000),
+(80, '3', '6', 'tuongtran', 100000),
+(81, '4', '6', 'tuongtran', 100000),
+(82, '1', '2', 'luongle', 100000),
+(83, '1', '3', 'luongle', 100000),
+(84, '1', '4', 'luongle', 100000),
+(85, '1', '5', 'luongle', 100000),
+(86, '1', '6', 'luongle', 100000),
+(87, '1', '7', 'luongle', 100000),
+(88, '1', '8', 'luongle', 100000);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `supplier`
+-- Cấu trúc bảng cho bảng `supplier`
 --
 
 CREATE TABLE `supplier` (
@@ -188,27 +311,26 @@ CREATE TABLE `supplier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Dumping data for table `supplier`
+-- Đang đổ dữ liệu cho bảng `supplier`
 --
 
 INSERT INTO `supplier` (`id`, `name`, `address`, `phone`, `material`, `unit`, `costs`, `quantity`, `remain`) VALUES
 (1, 'In ly nhá»±a BÃ¬nh Minh TPHCM', '68 NguyÃªÌƒn HuÃªÌ£, Báº¿n NghÃ©, Quáº­n 1, Há»“ ChÃ­ Minh', '0902662275', 'Ly nhá»±a', 'CÃ¡i', 350000, '1000', '800'),
-(2, 'Phan Thanh Giáº£ng', 'PhÃº SÆ¡n B, Long PhÃº, Tam BÃ¬nh', '0868442808', 'ChÃ©n', 'CÃ¡i', 2000000, '1000', '1000');
+(5, 'Phan Thanh Giáº£ng', 'PhÃº SÆ¡n B, Long PhÃº, Tam BÃ¬nh', '0868442808', 'ChÃ©n', 'CÃ¡i', 2000000, '1000', '1000');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `bill`
+-- Chỉ mục cho bảng `bill`
 --
 ALTER TABLE `bill`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`),
   ADD KEY `empaccount` (`empaccount`);
 
 --
--- Indexes for table `employees`
+-- Chỉ mục cho bảng `employees`
 --
 ALTER TABLE `employees`
   ADD PRIMARY KEY (`id`),
@@ -216,66 +338,66 @@ ALTER TABLE `employees`
   ADD UNIQUE KEY `account` (`account`,`id_num`,`phone`);
 
 --
--- Indexes for table `product`
+-- Chỉ mục cho bảng `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
+  ADD KEY `id` (`id`);
 
 --
--- Indexes for table `shifts`
+-- Chỉ mục cho bảng `shifts`
 --
 ALTER TABLE `shifts`
   ADD PRIMARY KEY (`id`),
   ADD KEY `empAccount` (`empAccount`);
 
 --
--- Indexes for table `supplier`
+-- Chỉ mục cho bảng `supplier`
 --
 ALTER TABLE `supplier`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`,`phone`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `employees`
+-- AUTO_INCREMENT cho bảng `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
--- AUTO_INCREMENT for table `shifts`
+-- AUTO_INCREMENT cho bảng `shifts`
 --
 ALTER TABLE `shifts`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
--- AUTO_INCREMENT for table `supplier`
+-- AUTO_INCREMENT cho bảng `supplier`
 --
 ALTER TABLE `supplier`
-  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `bill`
+-- Các ràng buộc cho bảng `bill`
 --
 ALTER TABLE `bill`
   ADD CONSTRAINT `bill_ibfk_1` FOREIGN KEY (`empaccount`) REFERENCES `employees` (`account`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Constraints for table `shifts`
+-- Các ràng buộc cho bảng `shifts`
 --
 ALTER TABLE `shifts`
   ADD CONSTRAINT `shifts_ibfk_1` FOREIGN KEY (`empAccount`) REFERENCES `employees` (`account`) ON DELETE CASCADE ON UPDATE CASCADE;
