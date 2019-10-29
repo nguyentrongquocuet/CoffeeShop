@@ -74,6 +74,9 @@ header('Content-Type: text/html; charset=UTF-8');
                 <a class="nav-link active" href="#shift" data-toggle="tab"><i class="material-icons">calendar_view_day</i> Lịch trực</a>
               </li>
               <li class="nav-item">
+              	<a class="nav-link" href="#reg" data-toggle="tab"><i class="material-icons">receipt</i>Đăng ký / Xóa ca trực</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="#information" data-toggle="tab"><i class="material-icons">face</i> Thông tin</a>
               </li>
             </ul>
@@ -83,48 +86,6 @@ header('Content-Type: text/html; charset=UTF-8');
       <div class="card-body ">
         <div class="tab-content text-center">
           <div class="tab-pane active" id="shift">
-            <nav aria-label="breadcrumb" role="navigation">
-			  <ol class="breadcrumb">
-			    <li class="breadcrumb-item"><a href="#">Lịch trực</a></li>
-			    <li class="breadcrumb-item active" aria-current="page">Đăng ký ca trực</li>
-			  </ol>
-			</nav>
-			<form method="get" action="reg_shift.php" class="text-left">
-			  <div class="form-group">
-			  	<label>Chọn ngày </label><br>
-			  <?php 
-			  	for ($i = 2; $i < 9 ; $i++) { 
-			  	  if ($i==8)
-			  	  	$day = "Chủ nhật";
-			  	  else
-			  	  	$day = "Thứ ".$i;
-			  	?>
-			  	<div class="form-check form-check-inline">
-				  <label class="form-check-label">
-				    <input class="form-check-input" type="checkbox" id="day" name="day[]" value="<?php echo $i; ?>"><?php echo $day; ?>
-				    <span class="form-check-sign">
-				        <span class="check"></span>
-				    </span>
-				  </label>
-				</div>
-			  	<?php
-			  	}
-			   ?>
-			  </div>
-			  <div class="form-group">
-			    <label for="shift">Chọn ca trực</label><br>
-			    <select multiple class="form-control selectpicker col-md-6" name="shift[]" data-style="btn btn-link" id="shift">
-			      <option value="1">Ca 1 (6:00 - 10:00)</option>
-			      <option value="2">Ca 2 (10:00 - 14:00)</option>
-			      <option value="3">Ca 3 (14:00 - 18:00)</option>
-			      <option value="4">Ca 4 (18:00 - 22:00)</option>
-			    </select>
-			  </div>
-			  <div class="form-group">
-			  	<!-- <button class="btn btn-danger" type="reset">Chọn lại</button> -->
-			    <button class="btn btn-success">Đăng ký</button>
-			  </div>
-			</form>
 			<nav aria-label="breadcrumb" role="navigation">
 			  <ol class="breadcrumb">
 			    <li class="breadcrumb-item"><a href="#">Lịch trực</a></li>
@@ -181,6 +142,92 @@ header('Content-Type: text/html; charset=UTF-8');
 			  </tbody>
 			</table>
           </div>
+          <div class="tab-pane" id="reg">
+            <nav aria-label="breadcrumb" role="navigation">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item"><a href="#">Ca trực</a></li>
+			    <li class="breadcrumb-item active" aria-current="page">Đăng ký ca trực</li>
+			  </ol>
+			</nav>
+			<form method="get" action="reg_shift.php" class="text-left">
+			  <div class="form-group">
+			  	<label>Chọn ngày </label><br>
+			  <?php 
+			  	for ($i = 2; $i < 9 ; $i++) { 
+			  	  if ($i==8)
+			  	  	$day = "Chủ nhật";
+			  	  else
+			  	  	$day = "Thứ ".$i;
+			  	?>
+			  	<div class="form-check form-check-inline">
+				  <label class="form-check-label">
+				    <input class="form-check-input" type="checkbox" id="day" name="day[]" value="<?php echo $i; ?>"><?php echo $day; ?>
+				    <span class="form-check-sign">
+				        <span class="check"></span>
+				    </span>
+				  </label>
+				</div>
+			  	<?php
+			  	}
+			   ?>
+			  </div>
+			  <div class="form-group">
+			    <label for="shift">Chọn ca trực</label><br>
+			    <select multiple class="form-control selectpicker col-md-6" name="shift[]" data-style="btn btn-link" id="shift">
+			      <option value="1">Ca 1 (6:00 - 10:00)</option>
+			      <option value="2">Ca 2 (10:00 - 14:00)</option>
+			      <option value="3">Ca 3 (14:00 - 18:00)</option>
+			      <option value="4">Ca 4 (18:00 - 22:00)</option>
+			    </select>
+			  </div>
+			  <div class="form-group">
+			  	<!-- <button class="btn btn-danger" type="reset">Chọn lại</button> -->
+			    <button class="btn btn-success">Đăng ký</button>
+			  </div>
+			</form>
+			<nav aria-label="breadcrumb" role="navigation">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item"><a href="#">Ca trực</a></li>
+			    <li class="breadcrumb-item active" aria-current="page">Xóa ca trực</li>
+			  </ol>
+			</nav>
+			<form method="get" class="text-left" action="del_shift.php">
+			  <div class="form-group">
+			  	<label>Chọn ngày </label><br>
+			  <?php 
+			  	for ($i = 2; $i < 9 ; $i++) { 
+			  	  if ($i==8)
+			  	  	$day = "Chủ nhật";
+			  	  else
+			  	  	$day = "Thứ ".$i;
+			  	?>
+			  	<div class="form-check form-check-inline">
+				  <label class="form-check-label">
+				    <input class="form-check-input" type="checkbox" id="cday" name="cday[]" value="<?php echo $i; ?>"><?php echo $day; ?>
+				    <span class="form-check-sign">
+				        <span class="check"></span>
+				    </span>
+				  </label>
+				</div>
+			  	<?php
+			  	}
+			   ?>
+			  </div>
+			  <div class="form-group">
+			    <label for="cshift">Chọn ca trực</label><br>
+			    <select multiple class="form-control selectpicker col-md-6" name="cshift[]" data-style="btn btn-link" id="cshift">
+			      <option value="1">Ca 1 (6:00 - 10:00)</option>
+			      <option value="2">Ca 2 (10:00 - 14:00)</option>
+			      <option value="3">Ca 3 (14:00 - 18:00)</option>
+			      <option value="4">Ca 4 (18:00 - 22:00)</option>
+			    </select>
+			  </div>
+			  <div class="form-group">
+			  	<!-- <button class="btn btn-danger" type="reset">Chọn lại</button> -->
+			    <button class="btn btn-danger">Xóa</button>
+			  </div>
+			</form>
+		  </div>
           <div class="tab-pane" id="information">
             <nav aria-label="breadcrumb" role="navigation">
 			  <ol class="breadcrumb">
