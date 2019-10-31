@@ -143,7 +143,7 @@ header('Content-Type: text/html; charset=UTF-8');
                                 <!-- Modal body -->
                                 <div class="modal-body">
                                     <?php
-                                      $billdetail_sel = "SELECT product.name, product.price, product.thumb_img, bill_detail.quantity, bill_detail.total FROM product INNER JOIN bill_detail ON product.id=bill_detail.id_product WHERE bill_detail.id='".$row['id']."'";
+                                      $billdetail_sel = "SELECT product.name, product.price, product.thumb_img, detail_bill.quantity, detail_bill.total FROM product INNER JOIN detail_bill ON product.id=detail_bill.id_product WHERE detail_bill.id='".$row['id']."'";
                                       $billdetail_que = mysqli_query($conn, $billdetail_sel);
                                       if($billdetail_que->num_rows > 0)
                                         while ($rows = mysqli_fetch_assoc($billdetail_que)) {

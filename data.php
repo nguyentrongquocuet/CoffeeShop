@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 
 include 'sql_conn.php';
 
-$sqlQuery = "SELECT SUM(quantity) AS quantity, product FROM bill_detail GROUP BY product";
+$sqlQuery = "SELECT SUM(quantity) AS quantity, product FROM detail_bill GROUP BY product";
 
 $result = mysqli_query($conn,$sqlQuery);
 

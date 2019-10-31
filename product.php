@@ -223,72 +223,86 @@ header('Content-Type: text/html; charset=UTF-8');
     unset($_SESSION['addP']);
   }
 ?>
-                          <!-- Bảng hiển thị danh sách sản phẩm -->
-                          <table class="table table-hover" name="productTable">
-                            <thead>
-                              <tr>
-                                <th>Mã</th>
-                                <th>Hình ảnh</th>
-                                <th class="text-left">Tên sản phẩm</th>
-                                <th><form method="POST" class="form-inline">
-                                    <select onchange="this.form.submit()" class="selectpicker show-tick" data-style="select-with-transition" id="filter" name="filter"> <!-- onchange="this.form.submit()" để tự submit khi chọn loại cần lọc không cần nhấn nút -->
-                                      <option selected value="">Chọn loại</option>
-                                      <?php 
-                                       $select_sp = "SELECT DISTINCT species FROM product";
-                                       $select_sp_result = mysqli_query($conn, $select_sp);
+<!-- Bảng hiển thị danh sách sản phẩm -->
+<table class="table table-hover" name="productTable">
+  <thead>
+    <tr>
+      <th>Mã</th>
+      <th>Hình ảnh</th>
+      <th class="text-left">Tên sản phẩm</th>
+      <th><form method="POST" class="form-inline">
+      <select onchange="this.form.submit()" class="selectpicker show-tick" data-style="select-with-transition" id="filter" name="filter"> <!-- onchange="this.form.submit()" để tự submit khi chọn loại cần lọc không cần nhấn nút -->
+        <option selected value="">Chọn loại</option>
+        <?php 
+          $select_sp = "SELECT DISTINCT species FROM product";
+          $select_sp_result = mysqli_query($conn, $select_sp);
+          if ($select_sp_result->num_rows > 0) 
+            while ($row1 = mysqli_fetch_assoc($select_sp_result)) {
+              echo '<option value="'.$row1['species'].'">'.$row1['species'].'</option>';
+            }
+        ?>
+      </select> 
+      </form></th>
+      <th class="text-right">Giá</th>
+      <th class="text-right">Thao tác</th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php
+    include('sql_conn.php');
+    error_reporting(E_PARSE); //Ẩn lỗi 
+    if ($_POST["filter"] == "") {
+      $select_query = "SELECT * FROM product"; //Câu truy vấn khi không lọc
+    } else {
+      $select_query = "SELECT * FROM product WHERE species='".$_POST["filter"]."'"; //Câu truy vấn khi chọn loại để lọc
+    }
 
-                                       if ($select_sp_result->num_rows > 0) 
-                                         while ($row1 = mysqli_fetch_assoc($select_sp_result)) {
-                                           echo '<option value="'.$row1['species'].'">'.$row1['species'].'</option>';
-                                         }
-                                       
-                                      ?>
-                                    </select> 
-                                    </form>
-                                  </th>
-                                <th class="text-right">Giá</th>
-                                <th class="text-right">Thao tác</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <?php
-                                include('sql_conn.php');
-                                error_reporting(E_PARSE); //Ẩn lỗi 
-                                if ($_POST["filter"] == "") {
-                                $select_query = "SELECT * FROM product"; //Câu truy vấn khi không lọc
-                               } else {
-                                 $select_query = "SELECT * FROM product WHERE species='".$_POST["filter"]."'"; //Câu truy vấn khi chọn loại để lọc
-                               }
-
-                              $query0 = mysqli_query($conn, $select_query); //Thực hiện câu truy vấn
-                              if ($query0->num_rows > 0) { //Kiểm tra số dòng
-                                while ($row = mysqli_fetch_assoc($query0)) { //Đưa số vòng vào một mảng để hiển thị
-                                  $Gia= number_format($row['price'], 0);
-                                  ?>
-                                <tr>
-                                  <td><?php echo $row["id"]; ?></td>
-                                  <td><img src="<?php echo $row["thumb_img"]; ?>" width="120" /></td>
-                                  <th class="text-left"><?php echo $row["name"]; ?></th>
-                                  <td><?php echo $row["species"]; ?></td>
-                                  <td class="text-right"><?php echo $Gia; ?> VNĐ</td>
-                                  <td class="td-actions text-right">
-                                   <form method="get" action="delete_product.php"> 
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit<?php echo $row['id']; ?>">
-                                        <i class="material-icons">edit</i>
-                                    </button>
-                                    <button type="submit" rel="tooltip" class="btn btn-danger btn-sm" id="delete" name="delete" value="<?php echo $row["id"]; ?>" onclick="return verify()">
-                                      <i class="material-icons">delete</i>
-                                    </button>
-                                  </form>
-                                </td>
-                              </tr>
+    $query0 = mysqli_query($conn, $select_query); //Thực hiện câu truy vấn
+    if ($query0->num_rows > 0) { //Kiểm tra số dòng
+      while ($row = mysqli_fetch_assoc($query0)) { //Đưa số vòng vào một mảng để hiển thị
+        $Gia= number_format($row['price'], 0);
+  ?>
+    <tr>
+      <td><?php echo $row["id"]; ?></td>
+      <td><img src="<?php echo $row["thumb_img"]; ?>" width="120" /></td>
+      <th class="text-left"><?php echo $row["name"]; ?></th>
+      <td><?php echo $row["species"]; ?></td>
+      <td class="text-right"><?php echo $Gia; ?> VNĐ</td>
+      <td class="td-actions text-right">
+        <form method="get" action="delete_product.php"> 
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit<?php echo $row['id']; ?>">
+            <i class="material-icons">edit</i>
+          </button>
+          <button type="submit" rel="tooltip" class="btn btn-danger btn-sm" id="delete" name="delete" value="<?php echo $row["id"]; ?>" onsubmit="return verify()">
+            <i class="material-icons">delete</i>
+          </button>
+        </form>
+      </td>
+    </tr>
 <script type="text/javascript">
   function verify(){
-    var con = confirm('Bạn có muốn xóa sản phẩm này?');
-    if (con)
-      return true;
-    else 
-      return false;
+    var re = false
+    Swal.fire({
+      title: 'Bạn có muốn xóa sản phẩm này?',
+      text: "Không thể hoàn tác lại được!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        Swal.fire(
+          'Đã xóa!',
+          '',
+          'success'
+        )
+        re = true
+      }else{
+        re = false
+      }
+    })
+    return re
   }
 </script>
                               <!-- Modal chỉnh sửa -->
@@ -352,7 +366,7 @@ header('Content-Type: text/html; charset=UTF-8');
                               <?php
                                 include('sql_conn.php');
                                 error_reporting(E_PARSE); //Ẩn lỗi 
-                                $select_query = "SELECT * FROM supplier";
+                                $select_query = "SELECT * FROM warehouse";
                               
                               $query0 = mysqli_query($conn, $select_query); //Thực hiện câu truy vấn
                               if ($query0->num_rows > 0) { //Kiểm tra số dòng
@@ -403,7 +417,7 @@ header('Content-Type: text/html; charset=UTF-8');
                                         $editBtn = "ediBtn".$row['id'];
                                         if (isset($_POST[$editBtn])){
                                           $remain = $row['remain'] - $_POST['used'];
-                                          $edi = "UPDATE supplier SET remain = '".$remain."' WHERE id = '".$row['id']."'";
+                                          $edi = "UPDATE warehouse SET remain = '".$remain."' WHERE id = '".$row['id']."'";
                                           $edi_query = mysqli_query($conn, $edi); //Thuc thi cau lenh update
                                           echo '<script type="text/javascript">
                                                 window.location.href = "product.php";
@@ -449,16 +463,11 @@ header('Content-Type: text/html; charset=UTF-8');
                               </div>
                               <div class="col">
                                 <label class="bmd-label-static">Đơn vị tính</label>
-                                <select name="unit" id="unit" class="form-control selectpicker" data-style="btn btn-link">
-                                  <option value="Cái">Cái</option>
-                                  <option value="Kg">Kg</option>
-                                  <option value="Lít">Lít</option>
-                                  <option value="Túi">Túi</option>
-                                </select>
+                                <input type="text" name="unit" id="unit" class="form-control">
                               </div>
                               <div class="col">
                                 <label class="bmd-label-static">Giá thành</label>
-                                <input type="text" name="costs" id="costs" class="form-control" pattern="\[0-9]">
+                                <input type="text" name="cost" id="cost" class="form-control" pattern="\[0-9]">
                               </div>
                             </div>
                               <div class="row">
@@ -504,43 +513,71 @@ header('Content-Type: text/html; charset=UTF-8');
                           </ol>
                         </nav>
                         <hr>
-                        <table class="table table-hover" name="productTable">
-                            <thead>
-                              <tr>
-                                <th>Mã NCC</th>
-                                <th>Tên Nhà cung cấp</th>
-                                <th>Địa chỉ</th>
-                                <th>Số điện thoại</th>
-                                <th>Nguyên liệu nhập</th>
-                                <th>Số lượng</th>
-                                <th class="text-right">Tổng tiền</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <?php
-                                include('sql_conn.php');
-                                error_reporting(E_PARSE); //Ẩn lỗi 
-                                $select_query = "SELECT * FROM supplier"; //Câu truy vấn khi không lọc                           
-                              
-                              $query0 = mysqli_query($conn, $select_query); //Thực hiện câu truy vấn
-                              if ($query0->num_rows > 0) { //Kiểm tra số dòng
-                                while ($row = mysqli_fetch_assoc($query0)) { //Đưa số vòng vào một mảng để hiển thị
-                                  $giaNhap= number_format($row['costs'], 0);
-                                  echo '<tr>
-                                          <td>'.$row["id"].'</td>
-                                          <th>'.$row["name"].'</th>
-                                          <td>'.$row["address"].'</td>
-                                          <td>'.$row["phone"].'</td>
-                                          <td>'.$row["material"].'</td>
-                                          <td>'.$row['quantity'].' '.$row["unit"].'</td>
-                                          <td class="text-right">'.$giaNhap.' đ</td>
-                                        </tr>
-                                        ';
-                                }
-                              }
-                              ?>
-                            </tbody>
-                          </table>
+                        <p class="text-muted">Click vào từng dòng để hiện thông tin</p>
+                        <table class="table table-hover table-bordered" name="supplierTable">
+                          <thead>
+                            <tr>
+                              <th>Mã NCC</th>
+                              <th>Tên Nhà cung cấp</th>
+                              <th>Địa chỉ</th>
+                              <th>Số điện thoại</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+<?php
+  $showSupplier = "SELECT * FROM supplier";
+  $showSupplier_query = mysqli_query($conn, $showSupplier);
+
+  if ($showSupplier_query->num_rows > 0)
+    while ($rows = mysqli_fetch_assoc($showSupplier_query)) {
+    ?>
+    <tr data-toggle="modal" data-target="#showMore<?php echo $rows['id']; ?>">
+      <td><?php echo $rows['id']; ?></td>
+      <th><?php echo $rows['name']; ?></th>
+      <td><?php echo $rows['address']; ?></td>
+      <td><?php echo $rows['phone']; ?></td>
+    </tr>
+    <!-- Modal Show information -->
+    <div class="modal fade" id="showMore<?php echo $rows['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="showMoreModal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="showMoreModal">Chi tiết đơn đặt hàng</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <?php
+            $showInfo = "SELECT detail_import.id_supplier, detail_import.id, detail_import.quantity, detail_import.unit, detail_import.day, detail_import.cost, warehouse.material, employees.fullname FROM detail_import, warehouse, employees WHERE detail_import.id_employee = employees.id AND detail_import.id_warehouse = warehouse.id AND detail_import.id_supplier = '".$rows['id']."'";
+            $showInfo_query = mysqli_query($conn, $showInfo);
+            if ($showInfo_query->num_rows > 0)
+              while ($row1 = mysqli_fetch_assoc($showInfo_query)) {
+              ?>
+                <ul class="text-left">
+                  <li>Mã: <?php echo $row1['id']; ?></li>
+                  <li>Nguyên liệu: <?php echo $row1['material']; ?></li>
+                  <li>Số lượng: <?php echo $row1['quantity']." ".$row1['unit']; ?></li>
+                  <li>Giá nhập: <?php echo number_format($row1['cost'], 0); ?>đ</li>
+                  <li>Ngày nhập: <?php echo date('h:i:s d/m/Y', strtotime($row1['day'])); ?></li>
+                  <li>Nhân viên nhập: <?php echo $row1['fullname']; ?></li>
+                </ul>
+                <hr>
+              <?php
+              }
+          ?>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info" data-dismiss="modal">Đóng</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php
+    }
+?>
+                          </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

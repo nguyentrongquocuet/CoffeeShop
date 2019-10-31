@@ -25,7 +25,7 @@ if ($_SESSION['cart']['total'] > 0) {
       $cart_query = mysqli_query($conn, $cart_select);
       if($cart_query->num_rows > 0){
         while($row0 = mysqli_fetch_assoc($cart_query)){ 
-            $add = "INSERT INTO bill_detail VALUES ('".$id."' ,'".$row0['name']."', '".$_SESSION['cart'][$row0['id']]."', '".$_SESSION['cart'][$row0['id']]*$row0['price']."', '".$key."')";
+            $add = "INSERT INTO detail_bill VALUES ('".$id."' ,'".$row0['name']."', '".$_SESSION['cart'][$row0['id']]."', '".$_SESSION['cart'][$row0['id']]*$row0['price']."', '".$key."')";
             $add_query = mysqli_query($conn, $add);
             echo $add.'<br>';
             unset($_SESSION['cart'][$row0['id']]);
@@ -36,7 +36,9 @@ if ($_SESSION['cart']['total'] > 0) {
       }
     }
 }
-else
-    $_SESSION['paid'] = "no";    
+else{
+    $_SESSION['paid'] = "no";
+        
+}
 header('Location: index.php');	
 ?>

@@ -2,10 +2,10 @@
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 28, 2019 lúc 08:27 AM
--- Phiên bản máy phục vụ: 10.4.6-MariaDB
--- Phiên bản PHP: 7.3.9
+-- Host: 127.0.0.1
+-- Generation Time: Oct 31, 2019 at 07:30 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `nlcs`
+-- Database: `nlcs`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `bill`
+-- Table structure for table `bill`
 --
 
 CREATE TABLE `bill` (
@@ -36,65 +36,19 @@ CREATE TABLE `bill` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `bill`
+-- Dumping data for table `bill`
 --
 
 INSERT INTO `bill` (`id`, `time`, `empaccount`, `total`) VALUES
-(0, '2019-10-24 07:10:25', 'giangphan', 341000),
-(1, '2019-10-24 07:10:45', 'giangphan', 356000),
-(2, '2019-10-24 07:10:50', 'giangphan', 45000),
-(3, '2019-10-24 07:10:55', 'giangphan', 135000),
-(4, '2019-10-24 07:10:14', 'giangphan', 145000),
-(5, '2019-10-24 07:10:23', 'giangphan', 145000),
-(6, '2019-10-24 07:10:39', 'tuongtran', 74000),
-(7, '2019-10-24 07:10:46', 'tuongtran', 195000),
-(8, '2019-10-24 07:10:54', 'tuongtran', 184000),
-(9, '2019-10-24 07:10:00', 'tuongtran', 116000),
-(10, '2019-10-24 07:10:21', 'luongle', 323000),
-(11, '2019-10-24 07:10:28', 'luongle', 118000),
-(12, '2019-10-24 07:10:34', 'luongle', 117000),
-(13, '2019-10-24 07:10:37', 'luongle', 29000),
-(14, '2019-10-24 07:10:05', 'giangphan', 3900000),
-(15, '2019-10-24 07:10:53', 'giangphan', 290000),
-(16, '2019-10-25 11:10:09', 'giangphan', 1950000),
-(17, '2019-10-26 09:10:47', 'giangphan', 490000),
-(18, '2019-10-26 09:10:25', 'giangphan', 416000),
-(19, '2019-10-26 09:10:55', 'giangphan', 1210000),
-(20, '2019-10-26 12:10:08', 'giangphan', 203000),
-(21, '2019-10-27 09:10:27', 'giangphan', 29000),
-(22, '2019-10-27 09:10:13', 'giangphan', 465000),
-(23, '2019-10-27 09:10:49', 'tuongtran', 343000),
-(24, '2019-10-27 09:10:30', 'giangphan', 55000),
-(25, '2019-10-27 09:10:12', 'giangphan', 29000),
-(26, '2019-10-27 09:10:45', 'giangphan', 45000),
-(27, '2019-10-27 09:10:41', 'giangphan', 4410000),
-(28, '2019-10-27 09:10:20', 'giangphan', 261000),
-(29, '2019-10-27 09:10:41', 'giangphan', 2900000),
-(30, '2019-10-27 09:10:52', 'luongle', 882000),
-(31, '2019-10-28 07:10:49', 'giangphan', 0),
-(32, '2019-10-28 07:10:56', 'giangphan', 29000),
-(33, '2019-10-28 07:10:53', 'giangphan', 0),
-(34, '2019-10-28 07:10:00', 'giangphan', 0),
-(35, '2019-10-28 07:10:11', 'giangphan', 405000),
-(36, '2019-10-28 09:10:15', 'giangphan', 0),
-(37, '2019-10-28 09:10:48', 'giangphan', 0),
-(38, '2019-10-28 09:10:54', 'giangphan', 39000),
-(39, '2019-10-28 11:10:45', 'giangphan', 0),
-(40, '2019-10-28 11:10:14', 'giangphan', 1255000),
-(41, '2019-10-28 11:10:46', 'giangphan', 540000),
-(42, '2019-10-28 11:10:01', 'giangphan', 522000),
-(43, '2019-10-28 11:10:42', 'giangphan', 0),
-(44, '2019-10-28 11:10:06', 'giangphan', 0),
-(45, '2019-10-28 11:10:18', 'giangphan', 270000),
-(46, '2019-10-28 02:10:11', 'giangphan', 0),
-(47, '2019-10-28 02:10:15', 'giangphan', 0),
-(48, '2019-10-28 02:10:23', 'giangphan', 150000),
-(49, '2019-10-28 02:10:20', 'giangphan', 200000);
+(0, '2019-10-30 07:10:47', 'giangphan', 156000),
+(1, '2019-10-30 07:10:01', 'giangphan', 457000),
+(2, '2019-10-30 07:10:13', 'giangphan', 952000),
+(3, '2019-10-31 10:10:16', 'giangphan', 58000);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `employees`
+-- Table structure for table `employees`
 --
 
 CREATE TABLE `employees` (
@@ -111,7 +65,7 @@ CREATE TABLE `employees` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `employees`
+-- Dumping data for table `employees`
 --
 
 INSERT INTO `employees` (`id`, `fullname`, `account`, `password`, `id_num`, `address`, `phone`, `job`, `start`, `user_group`) VALUES
@@ -129,7 +83,7 @@ INSERT INTO `employees` (`id`, `fullname`, `account`, `password`, `id_num`, `add
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product`
+-- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
@@ -141,7 +95,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `product`
+-- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`id`, `name`, `species`, `price`, `thumb_img`) VALUES
@@ -192,7 +146,7 @@ INSERT INTO `product` (`id`, `name`, `species`, `price`, `thumb_img`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `shifts`
+-- Table structure for table `shifts`
 --
 
 CREATE TABLE `shifts` (
@@ -204,203 +158,190 @@ CREATE TABLE `shifts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `shifts`
+-- Dumping data for table `shifts`
 --
 
 INSERT INTO `shifts` (`id`, `shiftName`, `dayOfShift`, `empAccount`, `salaryOfShift`) VALUES
-(1, '1', '2', 'dilam', 100000),
-(2, '1', '3', 'dilam', 100000),
-(3, '2', '2', 'dilam', 100000),
-(4, '2', '3', 'dilam', 100000),
-(5, '2', '4', 'dilam', 100000),
-(6, '2', '5', 'dilam', 100000),
-(7, '3', '6', 'dilam', 100000),
-(8, '3', '7', 'dilam', 100000),
-(9, '3', '8', 'dilam', 100000),
-(10, '4', '2', 'dilam', 100000),
-(11, '4', '4', 'dilam', 100000),
-(12, '4', '6', 'dilam', 100000),
-(18, '4', '8', 'dilam', 100000),
-(19, '3', '2', 'dilam', 100000),
-(20, '3', '3', 'dilam', 100000),
-(21, '4', '3', 'dilam', 100000),
-(22, '1', '8', 'dilam', 100000),
-(23, '2', '8', 'dilam', 100000),
-(24, '1', '2', 'duyho', 100000),
-(25, '2', '2', 'duyho', 100000),
-(26, '1', '3', 'duyho', 100000),
-(27, '2', '3', 'duyho', 100000),
-(28, '1', '4', 'duyho', 100000),
-(29, '2', '4', 'duyho', 100000),
-(30, '1', '7', 'duyho', 100000),
-(31, '2', '7', 'duyho', 100000),
-(32, '3', '7', 'duyho', 100000),
-(33, '4', '7', 'duyho', 100000),
-(34, '2', '8', 'duyho', 100000),
-(35, '3', '8', 'duyho', 100000),
-(36, '1', '8', 'duyho', 100000),
-(37, '4', '8', 'duyho', 100000),
-(38, '2', '5', 'duyho', 100000),
-(39, '3', '5', 'duyho', 100000),
-(40, '2', '6', 'duyho', 100000),
-(41, '3', '6', 'duyho', 100000),
-(42, '3', '2', 'khamnguyen', 100000),
-(43, '4', '2', 'khamnguyen', 100000),
-(44, '3', '4', 'khamnguyen', 100000),
-(45, '4', '4', 'khamnguyen', 100000),
-(46, '3', '7', 'khamnguyen', 100000),
-(47, '4', '7', 'khamnguyen', 100000),
-(48, '3', '8', 'khamnguyen', 100000),
-(49, '4', '8', 'khamnguyen', 100000),
-(50, '1', '3', 'khamnguyen', 100000),
-(51, '2', '3', 'khamnguyen', 100000),
-(52, '1', '5', 'khamnguyen', 100000),
-(53, '2', '5', 'khamnguyen', 100000),
-(54, '1', '6', 'khamnguyen', 100000),
-(55, '2', '6', 'khamnguyen', 100000),
-(56, '4', '5', 'khoitran', 100000),
-(57, '4', '2', 'khangnguyen', 100000),
-(58, '4', '3', 'khangnguyen', 100000),
-(59, '4', '4', 'khangnguyen', 100000),
-(60, '4', '5', 'khangnguyen', 100000),
-(61, '4', '6', 'khangnguyen', 100000),
-(62, '4', '7', 'khangnguyen', 100000),
-(63, '4', '8', 'khangnguyen', 100000),
-(64, '1', '2', 'tuongtran', 100000),
-(65, '2', '2', 'tuongtran', 100000),
-(66, '1', '3', 'tuongtran', 100000),
-(67, '2', '3', 'tuongtran', 100000),
-(68, '1', '4', 'tuongtran', 100000),
-(69, '2', '4', 'tuongtran', 100000),
-(70, '1', '6', 'tuongtran', 100000),
-(71, '2', '6', 'tuongtran', 100000),
-(72, '1', '7', 'tuongtran', 100000),
-(73, '2', '7', 'tuongtran', 100000),
-(74, '1', '8', 'tuongtran', 100000),
-(75, '2', '8', 'tuongtran', 100000),
-(76, '3', '4', 'tuongtran', 100000),
-(77, '4', '4', 'tuongtran', 100000),
-(78, '3', '5', 'tuongtran', 100000),
-(79, '4', '5', 'tuongtran', 100000),
-(80, '3', '6', 'tuongtran', 100000),
-(81, '4', '6', 'tuongtran', 100000),
-(82, '1', '2', 'luongle', 100000),
-(83, '1', '3', 'luongle', 100000),
-(84, '1', '4', 'luongle', 100000),
-(85, '1', '5', 'luongle', 100000),
-(86, '1', '6', 'luongle', 100000),
-(87, '1', '7', 'luongle', 100000),
-(88, '1', '8', 'luongle', 100000);
+(97, '1', '2', 'dilam', 100000),
+(98, '2', '2', 'dilam', 100000),
+(99, '1', '3', 'dilam', 100000),
+(100, '2', '3', 'dilam', 100000),
+(101, '1', '4', 'dilam', 100000),
+(102, '2', '4', 'dilam', 100000),
+(103, '3', '5', 'dilam', 100000),
+(104, '4', '5', 'dilam', 100000),
+(105, '3', '6', 'dilam', 100000),
+(106, '4', '6', 'dilam', 100000),
+(107, '3', '7', 'dilam', 100000),
+(108, '4', '7', 'dilam', 100000),
+(109, '1', '2', 'tuongtran', 100000),
+(110, '2', '2', 'tuongtran', 100000),
+(111, '1', '3', 'tuongtran', 100000),
+(112, '2', '3', 'tuongtran', 100000),
+(113, '1', '4', 'tuongtran', 100000),
+(114, '2', '4', 'tuongtran', 100000),
+(115, '1', '5', 'tuongtran', 100000),
+(116, '2', '5', 'tuongtran', 100000),
+(117, '1', '6', 'tuongtran', 100000),
+(118, '2', '6', 'tuongtran', 100000),
+(119, '1', '7', 'tuongtran', 100000),
+(120, '2', '7', 'tuongtran', 100000),
+(121, '1', '8', 'tuongtran', 100000),
+(122, '2', '8', 'tuongtran', 100000),
+(123, '3', '2', 'luongle', 100000),
+(124, '4', '2', 'luongle', 100000),
+(125, '3', '3', 'luongle', 100000),
+(126, '4', '3', 'luongle', 100000),
+(127, '3', '4', 'luongle', 100000),
+(128, '4', '4', 'luongle', 100000),
+(129, '3', '5', 'luongle', 100000),
+(130, '4', '5', 'luongle', 100000),
+(131, '3', '6', 'luongle', 100000),
+(132, '4', '6', 'luongle', 100000),
+(133, '3', '7', 'luongle', 100000),
+(134, '4', '7', 'luongle', 100000),
+(135, '3', '8', 'luongle', 100000),
+(136, '4', '8', 'luongle', 100000),
+(137, '1', '5', 'khamnguyen', 100000),
+(138, '2', '5', 'khamnguyen', 100000),
+(139, '1', '6', 'khamnguyen', 100000),
+(140, '2', '6', 'khamnguyen', 100000),
+(141, '1', '7', 'khamnguyen', 100000),
+(142, '2', '7', 'khamnguyen', 100000),
+(143, '3', '2', 'khamnguyen', 100000),
+(144, '4', '2', 'khamnguyen', 100000),
+(145, '3', '3', 'khamnguyen', 100000),
+(146, '4', '3', 'khamnguyen', 100000),
+(147, '3', '4', 'khamnguyen', 100000),
+(148, '4', '4', 'khamnguyen', 100000),
+(149, '1', '8', 'dattran', 100000),
+(150, '2', '8', 'dattran', 100000),
+(151, '3', '8', 'dattran', 100000),
+(152, '4', '8', 'dattran', 100000),
+(153, '1', '2', 'khangnguyen', 100000),
+(154, '2', '2', 'khangnguyen', 100000),
+(155, '3', '2', 'khangnguyen', 100000),
+(156, '4', '2', 'khangnguyen', 100000),
+(157, '1', '4', 'khangnguyen', 100000),
+(158, '2', '4', 'khangnguyen', 100000),
+(159, '3', '4', 'khangnguyen', 100000),
+(160, '4', '4', 'khangnguyen', 100000),
+(161, '1', '6', 'khangnguyen', 100000),
+(162, '2', '6', 'khangnguyen', 100000),
+(163, '3', '6', 'khangnguyen', 100000),
+(164, '4', '6', 'khangnguyen', 100000),
+(165, '1', '8', 'khangnguyen', 100000),
+(166, '2', '8', 'khangnguyen', 100000),
+(167, '3', '8', 'khangnguyen', 100000),
+(168, '4', '8', 'khangnguyen', 100000),
+(169, '1', '3', 'khoitran', 100000),
+(170, '2', '3', 'khoitran', 100000),
+(171, '3', '3', 'khoitran', 100000),
+(172, '4', '3', 'khoitran', 100000),
+(173, '1', '5', 'khoitran', 100000),
+(174, '2', '5', 'khoitran', 100000),
+(175, '3', '5', 'khoitran', 100000),
+(176, '4', '5', 'khoitran', 100000),
+(177, '1', '7', 'khoitran', 100000),
+(178, '2', '7', 'khoitran', 100000),
+(179, '3', '7', 'khoitran', 100000),
+(180, '4', '7', 'khoitran', 100000);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `supplier`
+-- Table structure for table `supplier`
 --
 
 CREATE TABLE `supplier` (
   `id` int(4) UNSIGNED NOT NULL,
-  `name` varchar(50) COLLATE utf8_vietnamese_ci NOT NULL,
-  `address` varchar(100) COLLATE utf8_vietnamese_ci NOT NULL,
+  `name` varchar(30) COLLATE utf8_vietnamese_ci NOT NULL,
   `phone` varchar(10) COLLATE utf8_vietnamese_ci NOT NULL,
-  `material` varchar(20) COLLATE utf8_vietnamese_ci NOT NULL,
-  `unit` varchar(15) COLLATE utf8_vietnamese_ci NOT NULL,
-  `costs` float NOT NULL,
-  `quantity` varchar(10) COLLATE utf8_vietnamese_ci NOT NULL,
-  `remain` varchar(10) COLLATE utf8_vietnamese_ci DEFAULT NULL
+  `address` varchar(100) COLLATE utf8_vietnamese_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `supplier`
+-- Dumping data for table `supplier`
 --
 
-INSERT INTO `supplier` (`id`, `name`, `address`, `phone`, `material`, `unit`, `costs`, `quantity`, `remain`) VALUES
-(1, 'In ly nhá»±a BÃ¬nh Minh TPHCM', '68 NguyÃªÌƒn HuÃªÌ£, Báº¿n NghÃ©, Quáº­n 1, Há»“ ChÃ­ Minh', '0902662275', 'Ly nhá»±a', 'CÃ¡i', 350000, '1000', '800'),
-(5, 'Phan Thanh Giáº£ng', 'PhÃº SÆ¡n B, Long PhÃº, Tam BÃ¬nh', '0868442808', 'ChÃ©n', 'CÃ¡i', 2000000, '1000', '1000');
+INSERT INTO `supplier` (`id`, `name`, `phone`, `address`) VALUES
+(0, 'CÃ´ng ty ly nhá»±a BÃ¬nh Minh', '0934524014', 'Sá»‘ 68 Nguyá»…n Huá»‡, PhÆ°á»ng Báº¿n NghÃ©, Quáº­n 1, TP. HCM');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `bill`
+-- Indexes for table `bill`
 --
 ALTER TABLE `bill`
   ADD PRIMARY KEY (`id`),
   ADD KEY `empaccount` (`empaccount`);
 
 --
--- Chỉ mục cho bảng `employees`
+-- Indexes for table `employees`
 --
 ALTER TABLE `employees`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`),
-  ADD UNIQUE KEY `account` (`account`,`id_num`,`phone`);
+  ADD UNIQUE KEY `account` (`account`),
+  ADD KEY `account_2` (`account`);
 
 --
--- Chỉ mục cho bảng `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `shifts`
+-- Indexes for table `shifts`
 --
 ALTER TABLE `shifts`
   ADD PRIMARY KEY (`id`),
   ADD KEY `empAccount` (`empAccount`);
 
 --
--- Chỉ mục cho bảng `supplier`
+-- Indexes for table `supplier`
 --
 ALTER TABLE `supplier`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`,`phone`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `employees`
+-- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
   MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT cho bảng `product`
+-- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
--- AUTO_INCREMENT cho bảng `shifts`
+-- AUTO_INCREMENT for table `shifts`
 --
 ALTER TABLE `shifts`
-  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
 
 --
--- AUTO_INCREMENT cho bảng `supplier`
---
-ALTER TABLE `supplier`
-  MODIFY `id` int(4) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `bill`
+-- Constraints for table `bill`
 --
 ALTER TABLE `bill`
   ADD CONSTRAINT `bill_ibfk_1` FOREIGN KEY (`empaccount`) REFERENCES `employees` (`account`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `shifts`
+-- Constraints for table `shifts`
 --
 ALTER TABLE `shifts`
-  ADD CONSTRAINT `shifts_ibfk_1` FOREIGN KEY (`empAccount`) REFERENCES `employees` (`account`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `shifts_ibfk_1` FOREIGN KEY (`empAccount`) REFERENCES `employees` (`account`) ON DELETE NO ACTION ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
