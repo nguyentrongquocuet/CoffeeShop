@@ -22,7 +22,7 @@ header('Content-Type: text/html; charset=UTF-8');
   <body>
     <nav class="navbar navbar-expand-lg bg-primary sticky-top">
       <div class="container">
-        <a class="navbar-brand">HỆ THỐNG QUẢN LÝ</a>
+        <a class="navbar-brand" href="/">HỆ THỐNG QUẢN LÝ</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="sr-only">Toggle navigation</span>
         <span class="navbar-toggler-icon"></span>
@@ -104,7 +104,7 @@ header('Content-Type: text/html; charset=UTF-8');
                               <li class="breadcrumb-item active" aria-current="page">Thên nhân viên</li>
                             </ol>
                           </nav>
-                          <form method="get" action="add_emp.php" onsubmit="return validateEmp()">
+                          <form method="get" action="add_emp.php" onsubmit="return validateEmp()" autocomplete="off">
                             <div class="form-row">
                               <div class="col-4">
                                 <label class="bmd-label-static">Họ tên*</label>
@@ -116,7 +116,7 @@ header('Content-Type: text/html; charset=UTF-8');
                               </div>
                               <div class="col">
                               	<label class="bmd-label-static">Số CMND*</label>
-                              	<input type="text" name="id_num" id="id_num" class="form-control" pattern="\d{9,12}">
+                              	<input type="text" name="id_num" id="id_num" class="form-control" pattern="\d{9,12}" autocomplete="off">
                               </div>
                               <div class="col">
                                 <label class="bmd-label-static">Địa chỉ*</label>
@@ -130,12 +130,12 @@ header('Content-Type: text/html; charset=UTF-8');
                               </div>
                               <div class="col-2">
                               	<label class="bmd-label-static">Mật khẩu*</label>
-                              	<input type="password" name="password" id="password" class="form-control">
+                              	<input type="password" name="password" id="password" class="form-control" autocomplete="off">
                               </div>
                               <div class="col-3">
                                 <select class="selectpicker show-tick" data-style="select-with-transition" name="job" id="job">
-                                  <option disabled selected>Công việc*</option>
-                                  <option value="Phục vụ">Phục vụ</option>
+                                  <option disabled>Công việc*</option>
+                                  <option selected value="Phục vụ">Phục vụ</option>
                                   <option value="Chế biến">Chế biến</option>
                                   <option value="Order">Order</option>
                                 </select>
@@ -143,6 +143,10 @@ header('Content-Type: text/html; charset=UTF-8');
                               <div class="col">
                                 <label class="bmd-label-static">Năm vào làm*</label>
                                 <input type="text" name="start" id="start" class="form-control" pattern="\d{4,4}">
+                              </div>
+                              <div class="col">
+                                <label class="bmd-label-static">Luong</label>
+                                <input type="number" name="shiftsalary" id="shiftsalary" class="form-control" min="0">
                               </div>
                             </div>
                               <div class="row">
@@ -162,8 +166,11 @@ header('Content-Type: text/html; charset=UTF-8');
     var phone = document.getElementById('phone').value;
     var job = document.getElementById('job').value;
     var start = document.getElementById('start').value;
+    var salary = document.getElementById('shiftsalary').value;
+    
 
-    if (fullname!="" && account!="" && password!="" && id_num!="" && address!="" && phone!="" && job!="" && start!="") {
+
+    if (fullname!="" && account!="" && password!="" && id_num!="" && address!="" && phone!="" && job!="" && start!="" && parseInt(salary)!=0) {
       Swal.fire({
         type: 'success',
         title: 'Đã thêm nhân viên',
@@ -211,6 +218,7 @@ header('Content-Type: text/html; charset=UTF-8');
                                   <th>Công việc</th>
                                   <th>Năm vào</th>
                                   <th>Thao tác</th>
+                                  <th>Luong</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -229,6 +237,7 @@ header('Content-Type: text/html; charset=UTF-8');
       <td class="text-left"><?php echo $row['address']; ?></td>
       <td><?php echo $row['job']; ?></td>
       <td><?php echo $row['start']; ?></td>
+      <td><?php echo $row['shiftSalary']; ?></td>
       <td>
         <?php 
           if ($row['user_group']=="admin") {
@@ -269,16 +278,16 @@ header('Content-Type: text/html; charset=UTF-8');
           <div class="modal-body text-left">
             <div class="form-group">
               <label for="ephone">Số điện thoại</label>
-              <input type="text" name="ephone" id="ephone" pattern="\d{10,10}" class="form-control">
+              <input type="text" name="ephone" id="ephone" pattern="\d{10,10}" class="form-control" placeholder="<?php echo $row['phone']?>">
             </div>
             <div class="form-group">
               <label for="eaddress">Địa chỉ</label>
-              <input type="text" name="eaddress" id="eaddress" class="form-control">
+              <input type="text" name="eaddress" id="eaddress" class="form-control" placeholder="<?php echo $row['address']?>"> 
             </div>
             <div class="form-group">
               <label for="ejob">Công việc</label>
               <select class="form-control" data-style="btn btn-link" id="ejob" name="ejob">
-                <option disabled selected value="">Công việc*</option>
+                <option disabled selected value="<?php echo $row['job']?>">Công việc*</option>
                 <option value="Phục vụ">Phục vụ</option>
                 <option value="Chế biến">Chế biến</option>
                 <option value="Order">Order</option>

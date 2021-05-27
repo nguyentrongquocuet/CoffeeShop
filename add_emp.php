@@ -7,7 +7,9 @@
 	    $user_group="order";
 	  else 
 	  	$user_group="";
-	  $add="INSERT INTO employees VALUES('', '".trim($_GET['fullname'])."', '".trim($_GET['account'])."', '".sha1($_GET['password'])."', '".trim($_GET['id_num'])."', '".trim($_GET['address'])."', '".trim($_GET['phone'])."', '".trim($_GET['job'])."', '".trim($_GET['start'])."', '".$user_group."')";
+	  $add="INSERT INTO employees VALUES(null, '".trim($_GET['fullname'])."', '".trim($_GET['account'])."', '".sha1($_GET['password'])."', '".trim($_GET['id_num'])."', '".trim($_GET['address'])."', '".trim($_GET['phone'])."', '".trim($_GET['job'])."', '".trim($_GET['start'])."', '".$user_group."', '".trim($_GET['shiftsalary'])."')";
+
+	  // $add = "insert into employees values(NULL,'Test Name', 'test','123456','2132332323222','tes EQWE','0123456789','Order','2021','order')";
       $add_query = mysqli_query($conn, $add);
 	  header('Location: employee.php');
 		// echo $add;

@@ -1,6 +1,10 @@
 <?php 
 	session_start();
 	include 'sql_conn.php';
+	$userData = mysqli_query($conn, "SELECT * FROM employees WHERE account="." '".$_SESSION['account']."'");
+
+	$salary = mysqli_fetch_assoc($userData)['shiftSalary'];
+	// error_log(print_r($salary, TRUE));
 	if (isset($_SESSION['account'])) {
 		if (isset($_GET['shift']) && isset($_GET['day'])) {
 			foreach ($_GET['day'] as $key) {
@@ -17,12 +21,13 @@
 							}
 							else{
 								// echo "Khong trung";
-								$reg = "INSERT INTO shifts VALUES ('', '".$value."', '".$key."', '".$_SESSION['account']."', '100000')";
+								$reg = "INSERT INTO shifts VALUES (null, '".$value."', '".$key."', '".$_SESSION['account']."', '100000')";
 							}
 						}
-						  mysqli_query($conn, $reg);
+						  error_log(print_r($reg, TRUE));
+						  $q1 = mysqli_query($conn, $reg);
 					}else{
-						$reg = "INSERT INTO shifts VALUES ('', '".$value."', '".$key."', '".$_SESSION['account']."', '100000')";
+						$reg = "INSERT INTO shifts VALUES (null, '".$value."', '".$key."', '".$_SESSION['account']."', '100000')";
 						// echo $reg;
 						mysqli_query($conn, $reg);
 					}					

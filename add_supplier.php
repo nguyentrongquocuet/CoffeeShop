@@ -30,7 +30,7 @@
 
 			$warehouse = "INSERT INTO warehouse VALUES ('".$id."', '".$material."', '".$_GET['unit']."', '".$_GET['quantity']."')";
 			$supplier = "INSERT INTO supplier VALUES ('".$id."', '".$name."', '".$_GET['phone']."', '".$address."')";
-			$detail = "INSERT INTO detail_import VALUES ('', '".$id_emp."', '".$id."', '".$id."', '".$_GET['quantity']."', '".$_GET['unit']."', '".$_GET['cost']."', '".date("Y-m-d h:m:s")."')";
+			$detail = "INSERT INTO detail_import VALUES (null, '".$id_emp."', '".$id."', '".$id."', '".$_GET['quantity']."', '".$_GET['unit']."', '".$_GET['cost']."', '".date("Y-m-d h:m:s")."')";
 			mysqli_query($conn, $warehouse);
 			mysqli_query($conn, $supplier);
 			mysqli_query($conn, $detail);
